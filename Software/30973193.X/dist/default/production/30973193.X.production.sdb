@@ -1,0 +1,321 @@
+[p GLOBOPT AUTOSTATIC IEEE_DBL IEEE_FLT PIC14 PIC14E ]
+[d version 1.1 ]
+[d edition pro ]
+[d chip 16F1939 ]
+[d frameptr 6 ]
+"10 C:\Program Files\Microchip\xc8\v2.32\pic\sources\c99\common\sprcadd.c
+[v ___fladd __fladd `(d  1 e 4 0 ]
+"4 C:\Program Files\Microchip\xc8\v2.32\pic\sources\c99\common\Umul8_16.c
+[v __Umul8_16 _Umul8_16 `(ui  1 e 2 0 ]
+"6 C:\Program Files\Microchip\xc8\v2.32\pic\sources\c99\pic\__eeprom.c
+[v ___eecpymem __eecpymem `(v  1 e 1 0 ]
+"39
+[v ___memcpyee __memcpyee `(v  1 e 1 0 ]
+"51 C:\Users\Thien An Bui\OneDrive\Desktop\Project-ID-30973193\Software\30973193.X\main.c
+[v _main main `(v  1 e 1 0 ]
+"15 C:\Users\Thien An Bui\OneDrive\Desktop\Project-ID-30973193\Software\30973193.X\mcc_generated_files/LED_manager.c
+[v _setA0 setA0 `(v  1 e 1 0 ]
+"22
+[v _setE1 setE1 `(v  1 e 1 0 ]
+"29
+[v _setA6 setA6 `(v  1 e 1 0 ]
+"36
+[v _setC3 setC3 `(v  1 e 1 0 ]
+"43
+[v _setD1 setD1 `(v  1 e 1 0 ]
+"50
+[v _setD3 setD3 `(v  1 e 1 0 ]
+"57
+[v _setC5 setC5 `(v  1 e 1 0 ]
+"64
+[v _setC7 setC7 `(v  1 e 1 0 ]
+"71
+[v _setD5 setD5 `(v  1 e 1 0 ]
+"78
+[v _setD7 setD7 `(v  1 e 1 0 ]
+"88
+[v _setA2 setA2 `(v  1 e 1 0 ]
+"95
+[v _setA3 setA3 `(v  1 e 1 0 ]
+"102
+[v _setA7 setA7 `(v  1 e 1 0 ]
+"109
+[v _setC0 setC0 `(v  1 e 1 0 ]
+"116
+[v _setD0 setD0 `(v  1 e 1 0 ]
+"123
+[v _setD2 setD2 `(v  1 e 1 0 ]
+"130
+[v _setC4 setC4 `(v  1 e 1 0 ]
+"137
+[v _setC6 setC6 `(v  1 e 1 0 ]
+"144
+[v _setD4 setD4 `(v  1 e 1 0 ]
+"151
+[v _setD6 setD6 `(v  1 e 1 0 ]
+"50 C:\Users\Thien An Bui\OneDrive\Desktop\Project-ID-30973193\Software\30973193.X\mcc_generated_files/mcc.c
+[v _SYSTEM_Initialize SYSTEM_Initialize `(v  1 e 1 0 ]
+"58
+[v _OSCILLATOR_Initialize OSCILLATOR_Initialize `(v  1 e 1 0 ]
+"68
+[v _WDT_Initialize WDT_Initialize `(v  1 e 1 0 ]
+"51 C:\Users\Thien An Bui\OneDrive\Desktop\Project-ID-30973193\Software\30973193.X\mcc_generated_files/pin_manager.c
+[v _PIN_MANAGER_Initialize PIN_MANAGER_Initialize `(v  1 e 1 0 ]
+"1313 C:/Program Files/Microchip/MPLABX/v5.50/packs/Microchip/PIC12-16F1xxx_DFP/1.2.63/xc8\pic\include\proc\pic16f1939.h
+[v _TRISA TRISA `VEuc  1 e 1 @140 ]
+"1375
+[v _TRISB TRISB `VEuc  1 e 1 @141 ]
+"1437
+[v _TRISC TRISC `VEuc  1 e 1 @142 ]
+"1499
+[v _TRISD TRISD `VEuc  1 e 1 @143 ]
+"1561
+[v _TRISE TRISE `VEuc  1 e 1 @144 ]
+[s S38 . 1 `uc 1 PS0 1 0 :1:0 
+`uc 1 PS1 1 0 :1:1 
+`uc 1 PS2 1 0 :1:2 
+`uc 1 PSA 1 0 :1:3 
+`uc 1 TMR0SE 1 0 :1:4 
+`uc 1 TMR0CS 1 0 :1:5 
+`uc 1 INTEDG 1 0 :1:6 
+`uc 1 nWPUEN 1 0 :1:7 
+]
+"1787
+[s S47 . 1 `uc 1 PS 1 0 :3:0 
+`uc 1 . 1 0 :1:3 
+`uc 1 T0SE 1 0 :1:4 
+`uc 1 T0CS 1 0 :1:5 
+]
+[u S52 . 1 `S38 1 . 1 0 `S47 1 . 1 0 ]
+[v _OPTION_REGbits OPTION_REGbits `VES52  1 e 1 @149 ]
+"1898
+[v _WDTCON WDTCON `VEuc  1 e 1 @151 ]
+"1957
+[v _OSCTUNE OSCTUNE `VEuc  1 e 1 @152 ]
+"2015
+[v _OSCCON OSCCON `VEuc  1 e 1 @153 ]
+"2357
+[v _LATA LATA `VEuc  1 e 1 @268 ]
+[s S260 . 1 `uc 1 LATA0 1 0 :1:0 
+`uc 1 LATA1 1 0 :1:1 
+`uc 1 LATA2 1 0 :1:2 
+`uc 1 LATA3 1 0 :1:3 
+`uc 1 LATA4 1 0 :1:4 
+`uc 1 LATA5 1 0 :1:5 
+`uc 1 LATA6 1 0 :1:6 
+`uc 1 LATA7 1 0 :1:7 
+]
+"2374
+[u S269 . 1 `S260 1 . 1 0 ]
+[v _LATAbits LATAbits `VES269  1 e 1 @268 ]
+"2419
+[v _LATB LATB `VEuc  1 e 1 @269 ]
+"2481
+[v _LATC LATC `VEuc  1 e 1 @270 ]
+[s S201 . 1 `uc 1 LATC0 1 0 :1:0 
+`uc 1 LATC1 1 0 :1:1 
+`uc 1 LATC2 1 0 :1:2 
+`uc 1 LATC3 1 0 :1:3 
+`uc 1 LATC4 1 0 :1:4 
+`uc 1 LATC5 1 0 :1:5 
+`uc 1 LATC6 1 0 :1:6 
+`uc 1 LATC7 1 0 :1:7 
+]
+"2498
+[u S210 . 1 `S201 1 . 1 0 ]
+[v _LATCbits LATCbits `VES210  1 e 1 @270 ]
+"2543
+[v _LATD LATD `VEuc  1 e 1 @271 ]
+[s S306 . 1 `uc 1 LATD0 1 0 :1:0 
+`uc 1 LATD1 1 0 :1:1 
+`uc 1 LATD2 1 0 :1:2 
+`uc 1 LATD3 1 0 :1:3 
+`uc 1 LATD4 1 0 :1:4 
+`uc 1 LATD5 1 0 :1:5 
+`uc 1 LATD6 1 0 :1:6 
+`uc 1 LATD7 1 0 :1:7 
+]
+"2563
+[s S315 . 1 `uc 1 LATD 1 0 :8:0 
+]
+[u S317 . 1 `S306 1 . 1 0 `S315 1 . 1 0 ]
+[v _LATDbits LATDbits `VES317  1 e 1 @271 ]
+"2613
+[v _LATE LATE `VEuc  1 e 1 @272 ]
+[s S281 . 1 `uc 1 LATE0 1 0 :1:0 
+`uc 1 LATE1 1 0 :1:1 
+`uc 1 LATE2 1 0 :1:2 
+`uc 1 LATE3 1 0 :1:3 
+]
+"2626
+[u S286 . 1 `S281 1 . 1 0 ]
+[v _LATEbits LATEbits `VES286  1 e 1 @272 ]
+"2923
+[v _BORCON BORCON `VEuc  1 e 1 @278 ]
+"3272
+[v _APFCON APFCON `VEuc  1 e 1 @285 ]
+"3328
+[v _ANSELA ANSELA `VEuc  1 e 1 @396 ]
+"3386
+[v _ANSELB ANSELB `VEuc  1 e 1 @397 ]
+"3444
+[v _ANSELD ANSELD `VEuc  1 e 1 @399 ]
+"3514
+[v _ANSELE ANSELE `VEuc  1 e 1 @400 ]
+"4063
+[v _WPUB WPUB `VEuc  1 e 1 @525 ]
+"4133
+[v _WPUE WPUE `VEuc  1 e 1 @528 ]
+"45 C:\Users\Thien An Bui\OneDrive\Desktop\Project-ID-30973193\Software\30973193.X\main.c
+[v _Upper_LED Upper_LED `[10]*.37(v  1 e 20 0 ]
+"46
+[v _Lower_LED Lower_LED `[10]*.37(v  1 e 20 0 ]
+"51
+[v _main main `(v  1 e 1 0 ]
+{
+"82
+[v main@i_259 i `i  1 a 2 4 ]
+"75
+[v main@i i `i  1 a 2 2 ]
+"89
+} 0
+"78 C:\Users\Thien An Bui\OneDrive\Desktop\Project-ID-30973193\Software\30973193.X\mcc_generated_files/LED_manager.c
+[v _setD7 setD7 `(v  1 e 1 0 ]
+{
+[v setD7@status status `a  1 p 1 0 ]
+"84
+} 0
+"71
+[v _setD5 setD5 `(v  1 e 1 0 ]
+{
+[v setD5@status status `a  1 p 1 0 ]
+"77
+} 0
+"64
+[v _setC7 setC7 `(v  1 e 1 0 ]
+{
+[v setC7@status status `a  1 p 1 0 ]
+"70
+} 0
+"57
+[v _setC5 setC5 `(v  1 e 1 0 ]
+{
+[v setC5@status status `a  1 p 1 0 ]
+"63
+} 0
+"50
+[v _setD3 setD3 `(v  1 e 1 0 ]
+{
+[v setD3@status status `a  1 p 1 0 ]
+"56
+} 0
+"43
+[v _setD1 setD1 `(v  1 e 1 0 ]
+{
+[v setD1@status status `a  1 p 1 0 ]
+"49
+} 0
+"36
+[v _setC3 setC3 `(v  1 e 1 0 ]
+{
+[v setC3@status status `a  1 p 1 0 ]
+"42
+} 0
+"29
+[v _setA6 setA6 `(v  1 e 1 0 ]
+{
+[v setA6@status status `a  1 p 1 0 ]
+"35
+} 0
+"15
+[v _setA0 setA0 `(v  1 e 1 0 ]
+{
+[v setA0@status status `a  1 p 1 0 ]
+"21
+} 0
+"22
+[v _setE1 setE1 `(v  1 e 1 0 ]
+{
+[v setE1@status status `a  1 p 1 0 ]
+"28
+} 0
+"144
+[v _setD4 setD4 `(v  1 e 1 0 ]
+{
+[v setD4@status status `a  1 p 1 0 ]
+"150
+} 0
+"137
+[v _setC6 setC6 `(v  1 e 1 0 ]
+{
+[v setC6@status status `a  1 p 1 0 ]
+"143
+} 0
+"130
+[v _setC4 setC4 `(v  1 e 1 0 ]
+{
+[v setC4@status status `a  1 p 1 0 ]
+"136
+} 0
+"123
+[v _setD2 setD2 `(v  1 e 1 0 ]
+{
+[v setD2@status status `a  1 p 1 0 ]
+"129
+} 0
+"116
+[v _setD0 setD0 `(v  1 e 1 0 ]
+{
+[v setD0@status status `a  1 p 1 0 ]
+"122
+} 0
+"109
+[v _setC0 setC0 `(v  1 e 1 0 ]
+{
+[v setC0@status status `a  1 p 1 0 ]
+"115
+} 0
+"102
+[v _setA7 setA7 `(v  1 e 1 0 ]
+{
+[v setA7@status status `a  1 p 1 0 ]
+"108
+} 0
+"95
+[v _setA3 setA3 `(v  1 e 1 0 ]
+{
+[v setA3@status status `a  1 p 1 0 ]
+"101
+} 0
+"88
+[v _setA2 setA2 `(v  1 e 1 0 ]
+{
+[v setA2@status status `a  1 p 1 0 ]
+"94
+} 0
+"151
+[v _setD6 setD6 `(v  1 e 1 0 ]
+{
+[v setD6@status status `a  1 p 1 0 ]
+"157
+} 0
+"50 C:\Users\Thien An Bui\OneDrive\Desktop\Project-ID-30973193\Software\30973193.X\mcc_generated_files/mcc.c
+[v _SYSTEM_Initialize SYSTEM_Initialize `(v  1 e 1 0 ]
+{
+"56
+} 0
+"68
+[v _WDT_Initialize WDT_Initialize `(v  1 e 1 0 ]
+{
+"72
+} 0
+"51 C:\Users\Thien An Bui\OneDrive\Desktop\Project-ID-30973193\Software\30973193.X\mcc_generated_files/pin_manager.c
+[v _PIN_MANAGER_Initialize PIN_MANAGER_Initialize `(v  1 e 1 0 ]
+{
+"97
+} 0
+"58 C:\Users\Thien An Bui\OneDrive\Desktop\Project-ID-30973193\Software\30973193.X\mcc_generated_files/mcc.c
+[v _OSCILLATOR_Initialize OSCILLATOR_Initialize `(v  1 e 1 0 ]
+{
+"66
+} 0

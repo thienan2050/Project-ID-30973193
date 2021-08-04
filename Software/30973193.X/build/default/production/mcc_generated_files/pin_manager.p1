@@ -614,8 +614,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;mcc_generated_files/pin_manager.c: 64:     LATC = 0x00;
 [e = _LATC -> -> 0 `i `uc ]
 "69
-[; ;mcc_generated_files/pin_manager.c: 69:     TRISE = 0x0D;
-[e = _TRISE -> -> 13 `i `uc ]
+[; ;mcc_generated_files/pin_manager.c: 69:     TRISE = 0x09;
+[e = _TRISE -> -> 9 `i `uc ]
 "70
 [; ;mcc_generated_files/pin_manager.c: 70:     TRISA = 0x32;
 [e = _TRISA -> -> 50 `i `uc ]
@@ -632,14 +632,14 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;mcc_generated_files/pin_manager.c: 78:     ANSELD = 0x00;
 [e = _ANSELD -> -> 0 `i `uc ]
 "79
-[; ;mcc_generated_files/pin_manager.c: 79:     ANSELB = 0x29;
-[e = _ANSELB -> -> 41 `i `uc ]
+[; ;mcc_generated_files/pin_manager.c: 79:     ANSELB = 0x01;
+[e = _ANSELB -> -> 1 `i `uc ]
 "80
 [; ;mcc_generated_files/pin_manager.c: 80:     ANSELE = 0x05;
 [e = _ANSELE -> -> 5 `i `uc ]
 "81
-[; ;mcc_generated_files/pin_manager.c: 81:     ANSELA = 0x12;
-[e = _ANSELA -> -> 18 `i `uc ]
+[; ;mcc_generated_files/pin_manager.c: 81:     ANSELA = 0x02;
+[e = _ANSELA -> -> 2 `i `uc ]
 "86
 [; ;mcc_generated_files/pin_manager.c: 86:     WPUE = 0x00;
 [e = _WPUE -> -> 0 `i `uc ]

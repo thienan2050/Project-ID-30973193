@@ -5281,9 +5281,9 @@ extern __bank0 __bit __timeout;
 # 50 "./mcc_generated_files/mcc.h" 2
 
 # 1 "./mcc_generated_files/pin_manager.h" 1
-# 421 "./mcc_generated_files/pin_manager.h"
+# 483 "./mcc_generated_files/pin_manager.h"
 void PIN_MANAGER_Initialize (void);
-# 433 "./mcc_generated_files/pin_manager.h"
+# 495 "./mcc_generated_files/pin_manager.h"
 void PIN_MANAGER_IOC(void);
 # 51 "./mcc_generated_files/mcc.h" 2
 
@@ -5452,7 +5452,16 @@ void WDT_Initialize(void);
 
 void (* Upper_LED[10])(_Bool) = {setA0, setE1, setA6, setC3, setD1, setD3, setC5, setC7, setD5, setD7};
 void (* Lower_LED[10])(_Bool) = {setA2, setA3, setA7, setC0, setD0, setD2, setC4, setC6, setD4, setD6};
+typedef struct
+{
+    unsigned char upperCounter;
+    unsigned char lowerCounter;
+}Counter_t;
+
+
 char upperCounter = 4, lowerCounter = 5;
+typedef enum {ON, OFF} MODE;
+MODE status = OFF;
 
 
 
@@ -5461,50 +5470,116 @@ void main(void)
 {
 
     SYSTEM_Initialize();
-# 85 "main.c"
+    Counter_t savedCounter, currentCounter;
+    currentCounter.upperCounter = 5;
+    currentCounter.lowerCounter = 4;
+    savedCounter.upperCounter = 5;
+    savedCounter.lowerCounter = 4;
+
     do { LATCbits.LATC1 = 0; } while(0);
     do { LATCbits.LATC2 = 0; } while(0);
     while (1)
     {
-        if((PORTBbits.RB2 == 0)&&(upperCounter < 10))
+
+        if(PORTAbits.RA4 == 0)
         {
-            while(PORTBbits.RB2 == 0);
-            upperCounter++;
+            _delay((unsigned long)((100)*(500000/4000.0)));
+            if(PORTAbits.RA4 == 0)
+            {
+                if (status == OFF)
+                    status = ON;
+                else
+                    status = OFF;
+            }
         }
-        if((PORTBbits.RB1 == 0)&&(lowerCounter < 10))
+
+        if((PORTBbits.RB2 == 0)&&(currentCounter.upperCounter < 10))
         {
-            while(PORTBbits.RB1 == 0);
-            lowerCounter++;
+            _delay((unsigned long)((100)*(500000/4000.0)));
+            if(PORTBbits.RB2 != 0)
+                currentCounter.upperCounter++;
+            else if(PORTBbits.RB2 == 0)
+            {
+                _delay((unsigned long)((400)*(500000/4000.0)));
+                currentCounter.upperCounter++;
+            }
+
         }
-        if((PORTBbits.RB4 == 0)&&(upperCounter > 0))
+
+        if((PORTBbits.RB1 == 0)&&(currentCounter.lowerCounter < 10))
         {
-            while(PORTBbits.RB4 == 0);
-            upperCounter--;
+            _delay((unsigned long)((100)*(500000/4000.0)));
+            if(PORTBbits.RB1 != 0)
+                currentCounter.lowerCounter++;
+            else if(PORTBbits.RB1 == 0)
+            {
+                _delay((unsigned long)((400)*(500000/4000.0)));
+                currentCounter.lowerCounter++;
+            }
         }
-        if((PORTAbits.RA5 == 0)&&(lowerCounter > 0))
+
+        if((PORTBbits.RB4 == 0)&&(currentCounter.upperCounter > 0))
         {
-            while(PORTAbits.RA5 == 0);
-            lowerCounter--;
+            _delay((unsigned long)((100)*(500000/4000.0)));
+            if(PORTBbits.RB4 != 0)
+                currentCounter.upperCounter--;
+            else if(PORTBbits.RB4 == 0)
+            {
+                _delay((unsigned long)((400)*(500000/4000.0)));
+                currentCounter.upperCounter--;
+            }
+        }
+
+        if((PORTAbits.RA5 == 0)&&(currentCounter.lowerCounter > 0))
+        {
+            _delay((unsigned long)((100)*(500000/4000.0)));
+            if(PORTAbits.RA5 != 0)
+                currentCounter.lowerCounter--;
+            else if(PORTAbits.RA5 == 0)
+            {
+                _delay((unsigned long)((400)*(500000/4000.0)));
+                currentCounter.lowerCounter--;
+            }
         }
 
 
-        for (int i = 0; i < upperCounter; i++)
+        if(PORTBbits.RB3 == 0)
+        {
+
+            _delay((unsigned long)((400)*(500000/4000.0)));
+            if(PORTBbits.RB3 != 0)
+            {
+
+                currentCounter.upperCounter = savedCounter.upperCounter;
+                currentCounter.lowerCounter = savedCounter.lowerCounter;
+            }
+            else if(PORTBbits.RB3 == 0)
+            {
+
+
+                savedCounter.upperCounter = currentCounter.upperCounter;
+                savedCounter.lowerCounter = currentCounter.lowerCounter;
+            }
+
+        }
+
+        for (int i = 0; i < currentCounter.upperCounter; i++)
         {
             Upper_LED[i](1);
         }
-        for(int i = upperCounter; i < 10; i++)
+        for (int i = currentCounter.upperCounter; i < 10; i++)
         {
             Upper_LED[i](0);
         }
-        for (int i = 0; i < lowerCounter; i++)
+        for (int i = 0; i < currentCounter.lowerCounter; i++)
         {
             Lower_LED[i](1);
         }
-        for(int i = lowerCounter; i < 10; i++)
+        for (int i = currentCounter.lowerCounter; i < 10; i++)
         {
             Lower_LED[i](0);
         }
-
+# 202 "main.c"
     }
 
 }

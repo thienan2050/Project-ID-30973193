@@ -3,6 +3,11 @@
 [d edition pro ]
 [d chip 16F1939 ]
 [d frameptr 6 ]
+"56 C:\Users\Thien An Bui\OneDrive\Desktop\Project-ID-30973193\Software\30973193.X\main.c
+[e E3046 . `uc
+ON 0
+OFF 1
+]
 "10 C:\Program Files\Microchip\xc8\v2.32\pic\sources\c99\common\sprcadd.c
 [v ___fladd __fladd `(d  1 e 4 0 ]
 "4 C:\Program Files\Microchip\xc8\v2.32\pic\sources\c99\common\Umul8_16.c
@@ -11,7 +16,7 @@
 [v ___eecpymem __eecpymem `(v  1 e 1 0 ]
 "39
 [v ___memcpyee __memcpyee `(v  1 e 1 0 ]
-"52 C:\Users\Thien An Bui\OneDrive\Desktop\Project-ID-30973193\Software\30973193.X\main.c
+"61 C:\Users\Thien An Bui\OneDrive\Desktop\Project-ID-30973193\Software\30973193.X\main.c
 [v _main main `(v  1 e 1 0 ]
 "15 C:\Users\Thien An Bui\OneDrive\Desktop\Project-ID-30973193\Software\30973193.X\mcc_generated_files/LED_manager.c
 [v _setA0 setA0 `(v  1 e 1 0 ]
@@ -61,7 +66,7 @@
 [v _WDT_Initialize WDT_Initialize `(v  1 e 1 0 ]
 "55 C:\Users\Thien An Bui\OneDrive\Desktop\Project-ID-30973193\Software\30973193.X\mcc_generated_files/pin_manager.c
 [v _PIN_MANAGER_Initialize PIN_MANAGER_Initialize `(v  1 e 1 0 ]
-[s S303 . 1 `uc 1 RA0 1 0 :1:0 
+[s S288 . 1 `uc 1 RA0 1 0 :1:0 
 `uc 1 RA1 1 0 :1:1 
 `uc 1 RA2 1 0 :1:2 
 `uc 1 RA3 1 0 :1:3 
@@ -71,9 +76,9 @@
 `uc 1 RA7 1 0 :1:7 
 ]
 "446 C:/Program Files/Microchip/MPLABX/v5.50/packs/Microchip/PIC12-16F1xxx_DFP/1.2.63/xc8\pic\include\proc\pic16f1939.h
-[u S312 . 1 `S303 1 . 1 0 ]
-[v _PORTAbits PORTAbits `VES312  1 e 1 @12 ]
-[s S282 . 1 `uc 1 RB0 1 0 :1:0 
+[u S297 . 1 `S288 1 . 1 0 ]
+[v _PORTAbits PORTAbits `VES297  1 e 1 @12 ]
+[s S315 . 1 `uc 1 RB0 1 0 :1:0 
 `uc 1 RB1 1 0 :1:1 
 `uc 1 RB2 1 0 :1:2 
 `uc 1 RB3 1 0 :1:3 
@@ -83,8 +88,8 @@
 `uc 1 RB7 1 0 :1:7 
 ]
 "508
-[u S291 . 1 `S282 1 . 1 0 ]
-[v _PORTBbits PORTBbits `VES291  1 e 1 @13 ]
+[u S324 . 1 `S315 1 . 1 0 ]
+[v _PORTBbits PORTBbits `VES324  1 e 1 @13 ]
 "1313
 [v _TRISA TRISA `VEuc  1 e 1 @140 ]
 "1375
@@ -194,21 +199,24 @@
 [v _Upper_LED Upper_LED `[10]*.37(v  1 e 20 0 ]
 "46
 [v _Lower_LED Lower_LED `[10]*.37(v  1 e 20 0 ]
-"47
-[v _upperCounter upperCounter `uc  1 e 1 0 ]
-[v _lowerCounter lowerCounter `uc  1 e 1 0 ]
-"52
+"56
+[v _status status `E3046  1 e 1 0 ]
+"61
 [v _main main `(v  1 e 1 0 ]
 {
-"123
-[v main@i_367 i `i  1 a 2 9 ]
-"119
-[v main@i_366 i `i  1 a 2 5 ]
-"115
-[v main@i_365 i `i  1 a 2 7 ]
-"111
-[v main@i i `i  1 a 2 3 ]
-"130
+"170
+[v main@i_386 i `i  1 a 2 6 ]
+"166
+[v main@i_385 i `i  1 a 2 2 ]
+"162
+[v main@i_384 i `i  1 a 2 4 ]
+"158
+[v main@i i `i  1 a 2 0 ]
+[s S273 . 2 `uc 1 upperCounter 1 0 `uc 1 lowerCounter 1 1 ]
+"65
+[v main@currentCounter currentCounter `S273  1 a 2 10 ]
+[v main@savedCounter savedCounter `S273  1 a 2 8 ]
+"204
 } 0
 "78 C:\Users\Thien An Bui\OneDrive\Desktop\Project-ID-30973193\Software\30973193.X\mcc_generated_files/LED_manager.c
 [v _setD7 setD7 `(v  1 e 1 0 ]

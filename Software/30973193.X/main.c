@@ -44,7 +44,16 @@
 #include "mcc_generated_files/mcc.h"
 void (* Upper_LED[10])(bool) = {setA0, setE1, setA6, setC3, setD1, setD3, setC5, setC7, setD5, setD7};
 void (* Lower_LED[10])(bool) = {setA2, setA3, setA7, setC0, setD0, setD2, setC4, setC6, setD4, setD6};
+typedef struct
+{
+    unsigned char upperCounter;
+    unsigned char lowerCounter;
+}Counter_t;
+
+
 char upperCounter = 4, lowerCounter = 5;
+typedef enum {ON, OFF} MODE;
+MODE status = OFF;
 /*
                          Main application
  */
@@ -53,77 +62,142 @@ void main(void)
 {
     // initialize the device
     SYSTEM_Initialize();
-    
-    // When using interrupts, you need to set the Global and Peripheral Interrupt Enable bits
-    // Use the following macros to:
-
-    // Enable the Global Interrupts
-    //INTERRUPT_GlobalInterruptEnable();
-
-    // Enable the Peripheral Interrupts
-    //INTERRUPT_PeripheralInterruptEnable();
-
-    // Disable the Global Interrupts
-    //INTERRUPT_GlobalInterruptDisable();
-
-    // Disable the Peripheral Interrupts
-    //INTERRUPT_PeripheralInterruptDisable();
-    /*
-    while(1)
-    {
-        if(W_UP_GetValue() == 0)
-        {
-            Upper_LED[1](true);
-            while(W_UP_GetValue() == 0);
-        }
-            
-        else
-            Upper_LED[1](false);
-    }
-    */
+    Counter_t savedCounter, currentCounter;
+    currentCounter.upperCounter = 5;
+    currentCounter.lowerCounter = 4;
+    savedCounter.upperCounter = 5;
+    savedCounter.lowerCounter = 4;
     
     IO_RC1_SetLow();
     IO_RC2_SetLow();
     while (1)
     {
-        if((W_UP_GetValue() == 0)&&(upperCounter < 10))
+        /*ON-OFF touch pad */
+        if(ON_OFF_GetValue() == 0)
         {
-            while(W_UP_GetValue() == 0);
-            upperCounter++;
+            __delay_ms(100);
+            if(ON_OFF_GetValue() == 0)
+            {
+                if (status == OFF)
+                    status = ON;
+                else
+                    status = OFF;
+            }
         }
-        if((Y_UP_GetValue() == 0)&&(lowerCounter < 10))
+        /*W-UP touch pad */
+        if((W_UP_GetValue() == 0)&&(currentCounter.upperCounter < 10))
         {
-            while(Y_UP_GetValue() == 0);
-            lowerCounter++;
+            __delay_ms(100);
+            if(W_UP_GetValue() != 0)
+                currentCounter.upperCounter++;
+            else if(W_UP_GetValue() == 0)
+            {
+                __delay_ms(400);
+                currentCounter.upperCounter++;
+            }
+                
         }
-        if((W_DOWN_GetValue() == 0)&&(upperCounter > 0))
+        /*Y-UP touch pad */
+        if((Y_UP_GetValue() == 0)&&(currentCounter.lowerCounter < 10))
         {
-            while(W_DOWN_GetValue() == 0);
-            upperCounter--;
+            __delay_ms(100);
+            if(Y_UP_GetValue() != 0)
+                currentCounter.lowerCounter++;
+            else if(Y_UP_GetValue() == 0)
+            {
+                __delay_ms(400);
+                currentCounter.lowerCounter++;
+            }
         }
-        if((Y_DOWN_GetValue() == 0)&&(lowerCounter > 0))
+        /* W-DOWN touch pad */
+        if((W_DOWN_GetValue() == 0)&&(currentCounter.upperCounter > 0))
         {
-            while(Y_DOWN_GetValue() == 0);
-            lowerCounter--;
+            __delay_ms(100);
+            if(W_DOWN_GetValue() != 0)
+                currentCounter.upperCounter--;
+            else if(W_DOWN_GetValue() == 0)
+            {
+                __delay_ms(400);
+                currentCounter.upperCounter--;
+            }
         }
-        
+        /* Y-DOWN touch pad */
+        if((Y_DOWN_GetValue() == 0)&&(currentCounter.lowerCounter > 0))
+        {
+            __delay_ms(100);
+            if(Y_DOWN_GetValue() != 0)
+                currentCounter.lowerCounter--;
+            else if(Y_DOWN_GetValue() == 0)
+            {
+                __delay_ms(400);
+                currentCounter.lowerCounter--;
+            }
+        }
+        /*M1 touch pad */
+        /*M2 touch pad */
+        if(M2_GetValue() == 0)
+        {
+            
+            __delay_ms(400);
+            if(M2_GetValue() != 0)
+            {
+                /*Restore saved counter. */
+                currentCounter.upperCounter = savedCounter.upperCounter;
+                currentCounter.lowerCounter = savedCounter.lowerCounter;
+            }
+            else if(M2_GetValue() == 0)
+            {
+                /*Save new counter */
+                //LED_Toggle();
+                savedCounter.upperCounter = currentCounter.upperCounter;
+                savedCounter.lowerCounter = currentCounter.lowerCounter;
+            }
+            
+        }
         // Add your application code
-        for (int i = 0; i < upperCounter; i++)
+        for (int i = 0; i < currentCounter.upperCounter; i++)
         {
             Upper_LED[i](true);
         }
-        for(int i = upperCounter; i < 10; i++)
+        for (int i = currentCounter.upperCounter; i < 10; i++)
         {
             Upper_LED[i](false);
         }
-        for (int i = 0; i < lowerCounter; i++)
+        for (int i = 0; i < currentCounter.lowerCounter; i++)
         {
             Lower_LED[i](true);
         }
-        for(int i = lowerCounter; i < 10; i++)
+        for (int i = currentCounter.lowerCounter; i < 10; i++)
         {
             Lower_LED[i](false);
         }
+        /*
+        switch(status)
+        {
+            case ON:
+            {
+                //Do something here.
+                LED_SetHigh();
+                Upper_LED[5](false);
+                Lower_LED[5](false);
+            }
+            break;
+            case OFF:
+            {
+                //Do something here.
+                LED_SetLow();
+                for (int i = 0; i < 10; i++)
+                {
+                    Upper_LED[i](false);
+                    Lower_LED[i](false);
+                }
+                Upper_LED[5](true); 
+                Lower_LED[5](true);
+            }
+            break;
+            default : break;
+        }
+         */ 
 
     }
      

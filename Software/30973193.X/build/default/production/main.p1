@@ -99,7 +99,18 @@ Version 4.0 HI-TECH Software Intermediate Code
 "92 C:/Program Files/Microchip/MPLABX/v5.50/packs/Microchip/PIC12-16F1xxx_DFP/1.2.63/xc8\pic\include\pic.h
 [v __delay `JF2893 ~T0 @X0 0 e ]
 [p i __delay ]
-"497 C:/Program Files/Microchip/MPLABX/v5.50/packs/Microchip/PIC12-16F1xxx_DFP/1.2.63/xc8\pic\include\proc\pic16f1939.h
+"2619 C:/Program Files/Microchip/MPLABX/v5.50/packs/Microchip/PIC12-16F1xxx_DFP/1.2.63/xc8\pic\include\proc\pic16f1939.h
+[; ;C:/Program Files/Microchip/MPLABX/v5.50/packs/Microchip/PIC12-16F1xxx_DFP/1.2.63/xc8\pic\include\proc\pic16f1939.h: 2619:     struct {
+[s S128 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S128 . LATE0 LATE1 LATE2 LATE3 ]
+"2618
+[; ;C:/Program Files/Microchip/MPLABX/v5.50/packs/Microchip/PIC12-16F1xxx_DFP/1.2.63/xc8\pic\include\proc\pic16f1939.h: 2618: typedef union {
+[u S127 `S128 1 ]
+[n S127 . . ]
+"2626
+[; ;C:/Program Files/Microchip/MPLABX/v5.50/packs/Microchip/PIC12-16F1xxx_DFP/1.2.63/xc8\pic\include\proc\pic16f1939.h: 2626: extern volatile LATEbits_t LATEbits __attribute__((address(0x110)));
+[v _LATEbits `VS127 ~T0 @X0 0 e@272 ]
+"497
 [; ;C:/Program Files/Microchip/MPLABX/v5.50/packs/Microchip/PIC12-16F1xxx_DFP/1.2.63/xc8\pic\include\proc\pic16f1939.h: 497:     struct {
 [s S36 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
 [n S36 . RB0 RB1 RB2 RB3 RB4 RB5 RB6 RB7 ]
@@ -749,317 +760,558 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;main.c: 80:             {
 {
 "81
-[; ;main.c: 81:                 if (status == OFF)
-[e $ ! == -> _status `ui -> . `E3046 1 `ui 390  ]
-"82
-[; ;main.c: 82:                     status = ON;
-[e = _status . `E3046 0 ]
-[e $U 391  ]
-"83
-[; ;main.c: 83:                 else
-[e :U 390 ]
-"84
-[; ;main.c: 84:                     status = OFF;
-[e = _status . `E3046 1 ]
-[e :U 391 ]
-"85
-[; ;main.c: 85:             }
-}
-[e :U 389 ]
-"86
-[; ;main.c: 86:         }
-}
-[e :U 388 ]
-"88
-[; ;main.c: 88:         if((PORTBbits.RB2 == 0)&&(currentCounter.upperCounter < 10))
-[e $ ! && == -> . . _PORTBbits 0 2 `i -> 0 `i < -> . _currentCounter 0 `i -> 10 `i 392  ]
-"89
-[; ;main.c: 89:         {
-{
-"90
-[; ;main.c: 90:             _delay((unsigned long)((100)*(500000/4000.0)));
-[e ( __delay (1 -> * -> -> 100 `i `d / -> -> 500000 `l `d .4000.0 `ul ]
-"91
-[; ;main.c: 91:             if(PORTBbits.RB2 != 0)
-[e $ ! != -> . . _PORTBbits 0 2 `i -> 0 `i 393  ]
-"92
-[; ;main.c: 92:                 currentCounter.upperCounter++;
-[e ++ . _currentCounter 0 -> -> 1 `i `uc ]
-[e $U 394  ]
-"93
-[; ;main.c: 93:             else if(PORTBbits.RB2 == 0)
-[e :U 393 ]
-[e $ ! == -> . . _PORTBbits 0 2 `i -> 0 `i 395  ]
-"94
-[; ;main.c: 94:             {
-{
-"95
-[; ;main.c: 95:                 _delay((unsigned long)((400)*(500000/4000.0)));
-[e ( __delay (1 -> * -> -> 400 `i `d / -> -> 500000 `l `d .4000.0 `ul ]
-"96
-[; ;main.c: 96:                 currentCounter.upperCounter++;
-[e ++ . _currentCounter 0 -> -> 1 `i `uc ]
-"97
-[; ;main.c: 97:             }
-}
-[e :U 395 ]
-[e :U 394 ]
-"99
-[; ;main.c: 99:         }
-}
+[; ;main.c: 81:                 do { LATEbits.LATE2 = ~LATEbits.LATE2; } while(0);
 [e :U 392 ]
-"101
-[; ;main.c: 101:         if((PORTBbits.RB1 == 0)&&(currentCounter.lowerCounter < 10))
-[e $ ! && == -> . . _PORTBbits 0 1 `i -> 0 `i < -> . _currentCounter 1 `i -> 10 `i 396  ]
-"102
-[; ;main.c: 102:         {
 {
-"103
-[; ;main.c: 103:             _delay((unsigned long)((100)*(500000/4000.0)));
-[e ( __delay (1 -> * -> -> 100 `i `d / -> -> 500000 `l `d .4000.0 `ul ]
-"104
-[; ;main.c: 104:             if(PORTBbits.RB1 != 0)
-[e $ ! != -> . . _PORTBbits 0 1 `i -> 0 `i 397  ]
-"105
-[; ;main.c: 105:                 currentCounter.lowerCounter++;
-[e ++ . _currentCounter 1 -> -> 1 `i `uc ]
-[e $U 398  ]
-"106
-[; ;main.c: 106:             else if(PORTBbits.RB1 == 0)
-[e :U 397 ]
-[e $ ! == -> . . _PORTBbits 0 1 `i -> 0 `i 399  ]
-"107
-[; ;main.c: 107:             {
+[e = . . _LATEbits 0 2 -> ~ -> . . _LATEbits 0 2 `i `uc ]
+}
+[e :U 391 ]
+"82
+[; ;main.c: 82:                 if(status == OFF)
+[e $ ! == -> _status `ui -> . `E3046 1 `ui 393  ]
+"83
+[; ;main.c: 83:                 {
 {
-"108
-[; ;main.c: 108:                 _delay((unsigned long)((400)*(500000/4000.0)));
-[e ( __delay (1 -> * -> -> 400 `i `d / -> -> 500000 `l `d .4000.0 `ul ]
-"109
-[; ;main.c: 109:                 currentCounter.lowerCounter++;
-[e ++ . _currentCounter 1 -> -> 1 `i `uc ]
-"110
-[; ;main.c: 110:             }
-}
-[e :U 399 ]
-[e :U 398 ]
-"111
-[; ;main.c: 111:         }
-}
-[e :U 396 ]
-"113
-[; ;main.c: 113:         if((PORTBbits.RB4 == 0)&&(currentCounter.upperCounter > 0))
-[e $ ! && == -> . . _PORTBbits 0 4 `i -> 0 `i > -> . _currentCounter 0 `i -> 0 `i 400  ]
-"114
-[; ;main.c: 114:         {
-{
-"115
-[; ;main.c: 115:             _delay((unsigned long)((100)*(500000/4000.0)));
-[e ( __delay (1 -> * -> -> 100 `i `d / -> -> 500000 `l `d .4000.0 `ul ]
-"116
-[; ;main.c: 116:             if(PORTBbits.RB4 != 0)
-[e $ ! != -> . . _PORTBbits 0 4 `i -> 0 `i 401  ]
-"117
-[; ;main.c: 117:                 currentCounter.upperCounter--;
-[e -- . _currentCounter 0 -> -> 1 `i `uc ]
-[e $U 402  ]
-"118
-[; ;main.c: 118:             else if(PORTBbits.RB4 == 0)
-[e :U 401 ]
-[e $ ! == -> . . _PORTBbits 0 4 `i -> 0 `i 403  ]
-"119
-[; ;main.c: 119:             {
-{
-"120
-[; ;main.c: 120:                 _delay((unsigned long)((400)*(500000/4000.0)));
-[e ( __delay (1 -> * -> -> 400 `i `d / -> -> 500000 `l `d .4000.0 `ul ]
-"121
-[; ;main.c: 121:                 currentCounter.upperCounter--;
-[e -- . _currentCounter 0 -> -> 1 `i `uc ]
-"122
-[; ;main.c: 122:             }
-}
-[e :U 403 ]
-[e :U 402 ]
-"123
-[; ;main.c: 123:         }
-}
-[e :U 400 ]
-"125
-[; ;main.c: 125:         if((PORTAbits.RA5 == 0)&&(currentCounter.lowerCounter > 0))
-[e $ ! && == -> . . _PORTAbits 0 5 `i -> 0 `i > -> . _currentCounter 1 `i -> 0 `i 404  ]
-"126
-[; ;main.c: 126:         {
-{
-"127
-[; ;main.c: 127:             _delay((unsigned long)((100)*(500000/4000.0)));
-[e ( __delay (1 -> * -> -> 100 `i `d / -> -> 500000 `l `d .4000.0 `ul ]
-"128
-[; ;main.c: 128:             if(PORTAbits.RA5 != 0)
-[e $ ! != -> . . _PORTAbits 0 5 `i -> 0 `i 405  ]
-"129
-[; ;main.c: 129:                 currentCounter.lowerCounter--;
-[e -- . _currentCounter 1 -> -> 1 `i `uc ]
-[e $U 406  ]
-"130
-[; ;main.c: 130:             else if(PORTAbits.RA5 == 0)
-[e :U 405 ]
-[e $ ! == -> . . _PORTAbits 0 5 `i -> 0 `i 407  ]
-"131
-[; ;main.c: 131:             {
-{
-"132
-[; ;main.c: 132:                 _delay((unsigned long)((400)*(500000/4000.0)));
-[e ( __delay (1 -> * -> -> 400 `i `d / -> -> 500000 `l `d .4000.0 `ul ]
-"133
-[; ;main.c: 133:                 currentCounter.lowerCounter--;
-[e -- . _currentCounter 1 -> -> 1 `i `uc ]
-"134
-[; ;main.c: 134:             }
-}
-[e :U 407 ]
-[e :U 406 ]
-"135
-[; ;main.c: 135:         }
-}
-[e :U 404 ]
-"138
-[; ;main.c: 138:         if(PORTBbits.RB3 == 0)
-[e $ ! == -> . . _PORTBbits 0 3 `i -> 0 `i 408  ]
-"139
-[; ;main.c: 139:         {
-{
-"141
-[; ;main.c: 141:             _delay((unsigned long)((400)*(500000/4000.0)));
-[e ( __delay (1 -> * -> -> 400 `i `d / -> -> 500000 `l `d .4000.0 `ul ]
-"142
-[; ;main.c: 142:             if(PORTBbits.RB3 != 0)
-[e $ ! != -> . . _PORTBbits 0 3 `i -> 0 `i 409  ]
-"143
-[; ;main.c: 143:             {
-{
-"145
-[; ;main.c: 145:                 currentCounter.upperCounter = savedCounter.upperCounter;
-[e = . _currentCounter 0 . _savedCounter 0 ]
-"146
-[; ;main.c: 146:                 currentCounter.lowerCounter = savedCounter.lowerCounter;
-[e = . _currentCounter 1 . _savedCounter 1 ]
-"147
-[; ;main.c: 147:             }
-}
-[e $U 410  ]
-"148
-[; ;main.c: 148:             else if(PORTBbits.RB3 == 0)
-[e :U 409 ]
-[e $ ! == -> . . _PORTBbits 0 3 `i -> 0 `i 411  ]
-"149
-[; ;main.c: 149:             {
-{
-"152
-[; ;main.c: 152:                 savedCounter.upperCounter = currentCounter.upperCounter;
-[e = . _savedCounter 0 . _currentCounter 0 ]
-"153
-[; ;main.c: 153:                 savedCounter.lowerCounter = currentCounter.lowerCounter;
-[e = . _savedCounter 1 . _currentCounter 1 ]
-"154
-[; ;main.c: 154:             }
-}
-[e :U 411 ]
-[e :U 410 ]
-"156
-[; ;main.c: 156:         }
-}
-[e :U 408 ]
-"158
-[; ;main.c: 158:         for (int i = 0; i < currentCounter.upperCounter; i++)
+"84
+[; ;main.c: 84:                     status = ON;
+[e = _status . `E3046 0 ]
+"86
+[; ;main.c: 86:                     for(int i = 0; i < 10; i++)
 {
 [v _i `i ~T0 @X0 1 a ]
 [e = _i -> 0 `i ]
-[e $U 415  ]
-[e :U 412 ]
-"159
-[; ;main.c: 159:         {
+[e $ < _i -> 10 `i 394  ]
+[e $U 395  ]
+[e :U 394 ]
+"87
+[; ;main.c: 87:                     {
 {
-"160
-[; ;main.c: 160:             Upper_LED[i](1);
-[e ( *U *U + &U _Upper_LED * -> -> _i `ui `ux -> -> # *U &U _Upper_LED `ui `ux (1 -> -> 1 `i `a ]
-"161
-[; ;main.c: 161:         }
+"88
+[; ;main.c: 88:                         Upper_LED[i](0);
+[e ( *U *U + &U _Upper_LED * -> -> _i `ui `ux -> -> # *U &U _Upper_LED `ui `ux (1 -> -> 0 `i `a ]
+"89
+[; ;main.c: 89:                         Lower_LED[i](0);
+[e ( *U *U + &U _Lower_LED * -> -> _i `ui `ux -> -> # *U &U _Lower_LED `ui `ux (1 -> -> 0 `i `a ]
+"90
+[; ;main.c: 90:                     }
 }
 [e ++ _i -> 1 `i ]
-[e :U 415 ]
-[e $ < _i -> . _currentCounter 0 `i 412  ]
-[e :U 413 ]
+[e $ < _i -> 10 `i 394  ]
+[e :U 395 ]
 }
-"162
-[; ;main.c: 162:         for (int i = currentCounter.upperCounter; i < 10; i++)
+"92
+[; ;main.c: 92:                     for(int i = 0; i < 10; i++)
 {
 [v _i `i ~T0 @X0 1 a ]
-[e = _i -> . _currentCounter 0 `i ]
+[e = _i -> 0 `i ]
+[e $ < _i -> 10 `i 397  ]
+[e $U 398  ]
+[e :U 397 ]
+"93
+[; ;main.c: 93:                     {
+{
+"94
+[; ;main.c: 94:                         Upper_LED[i](1);
+[e ( *U *U + &U _Upper_LED * -> -> _i `ui `ux -> -> # *U &U _Upper_LED `ui `ux (1 -> -> 1 `i `a ]
+"95
+[; ;main.c: 95:                         Lower_LED[i](1);
+[e ( *U *U + &U _Lower_LED * -> -> _i `ui `ux -> -> # *U &U _Lower_LED `ui `ux (1 -> -> 1 `i `a ]
+"96
+[; ;main.c: 96:                         _delay((unsigned long)((50)*(500000/4000.0)));
+[e ( __delay (1 -> * -> -> 50 `i `d / -> -> 500000 `l `d .4000.0 `ul ]
+"97
+[; ;main.c: 97:                     }
+}
+[e ++ _i -> 1 `i ]
+[e $ < _i -> 10 `i 397  ]
+[e :U 398 ]
+}
+"98
+[; ;main.c: 98:                     for(int i = 9; i >= 0; i--)
+{
+[v _i `i ~T0 @X0 1 a ]
+[e = _i -> 9 `i ]
+[e $ >= _i -> 0 `i 400  ]
+[e $U 401  ]
+[e :U 400 ]
+"99
+[; ;main.c: 99:                     {
+{
+"100
+[; ;main.c: 100:                         Upper_LED[i](0);
+[e ( *U *U + &U _Upper_LED * -> -> _i `ui `ux -> -> # *U &U _Upper_LED `ui `ux (1 -> -> 0 `i `a ]
+"101
+[; ;main.c: 101:                         Lower_LED[i](0);
+[e ( *U *U + &U _Lower_LED * -> -> _i `ui `ux -> -> # *U &U _Lower_LED `ui `ux (1 -> -> 0 `i `a ]
+"102
+[; ;main.c: 102:                         _delay((unsigned long)((100)*(500000/4000.0)));
+[e ( __delay (1 -> * -> -> 100 `i `d / -> -> 500000 `l `d .4000.0 `ul ]
+"103
+[; ;main.c: 103:                     }
+}
+[e -- _i -> 1 `i ]
+[e $ >= _i -> 0 `i 400  ]
+[e :U 401 ]
+}
+"104
+[; ;main.c: 104:                     for(int i = 0; i < (currentCounter.upperCounter > currentCounter.lowerCounter ? currentCounter.lowerCounter : currentCounter.upperCounter); i++)
+{
+[v _i `i ~T0 @X0 1 a ]
+[e = _i -> 0 `i ]
+[e $U 406  ]
+[e :U 403 ]
+"105
+[; ;main.c: 105:                     {
+{
+"106
+[; ;main.c: 106:                         Upper_LED[i](1);
+[e ( *U *U + &U _Upper_LED * -> -> _i `ui `ux -> -> # *U &U _Upper_LED `ui `ux (1 -> -> 1 `i `a ]
+"107
+[; ;main.c: 107:                         Lower_LED[i](1);
+[e ( *U *U + &U _Lower_LED * -> -> _i `ui `ux -> -> # *U &U _Lower_LED `ui `ux (1 -> -> 1 `i `a ]
+"108
+[; ;main.c: 108:                         _delay((unsigned long)((50)*(500000/4000.0)));
+[e ( __delay (1 -> * -> -> 50 `i `d / -> -> 500000 `l `d .4000.0 `ul ]
+"109
+[; ;main.c: 109:                     }
+}
+[e ++ _i -> 1 `i ]
+[e :U 406 ]
+[e $ < _i ? > -> . _currentCounter 0 `i -> . _currentCounter 1 `i : -> . _currentCounter 1 `i -> . _currentCounter 0 `i 403  ]
+[e :U 404 ]
+}
+"110
+[; ;main.c: 110:                     for(int i = (currentCounter.upperCounter > currentCounter.lowerCounter ? currentCounter.lowerCounter : currentCounter.upperCounter); i < (currentCounter.upperCounter < currentCounter.lowerCounter ? currentCounter.lowerCounter : currentCounter.upperCounter); i++)
+{
+[v _i `i ~T0 @X0 1 a ]
+[e = _i ? > -> . _currentCounter 0 `i -> . _currentCounter 1 `i : -> . _currentCounter 1 `i -> . _currentCounter 0 `i ]
+[e $U 410  ]
+[e :U 407 ]
+"111
+[; ;main.c: 111:                     {
+{
+"112
+[; ;main.c: 112:                         if (currentCounter.upperCounter > currentCounter.lowerCounter)
+[e $ ! > -> . _currentCounter 0 `i -> . _currentCounter 1 `i 411  ]
+"113
+[; ;main.c: 113:                             Upper_LED[i](1);
+[e ( *U *U + &U _Upper_LED * -> -> _i `ui `ux -> -> # *U &U _Upper_LED `ui `ux (1 -> -> 1 `i `a ]
+[e $U 412  ]
+"114
+[; ;main.c: 114:                         else if (currentCounter.upperCounter < currentCounter.lowerCounter)
+[e :U 411 ]
+[e $ ! < -> . _currentCounter 0 `i -> . _currentCounter 1 `i 413  ]
+"115
+[; ;main.c: 115:                             Lower_LED[i](1);
+[e ( *U *U + &U _Lower_LED * -> -> _i `ui `ux -> -> # *U &U _Lower_LED `ui `ux (1 -> -> 1 `i `a ]
+[e $U 414  ]
+"116
+[; ;main.c: 116:                         else
+[e :U 413 ]
+"117
+[; ;main.c: 117:                             break;
+[e $U 408  ]
+[e :U 414 ]
+[e :U 412 ]
+"118
+[; ;main.c: 118:                         _delay((unsigned long)((50)*(500000/4000.0)));
+[e ( __delay (1 -> * -> -> 50 `i `d / -> -> 500000 `l `d .4000.0 `ul ]
+"119
+[; ;main.c: 119:                     }
+}
+[e ++ _i -> 1 `i ]
+[e :U 410 ]
+[e $ < _i ? < -> . _currentCounter 0 `i -> . _currentCounter 1 `i : -> . _currentCounter 1 `i -> . _currentCounter 0 `i 407  ]
+[e :U 408 ]
+}
+"120
+[; ;main.c: 120:                 }
+}
+[e $U 415  ]
+"121
+[; ;main.c: 121:                 else
+[e :U 393 ]
+"122
+[; ;main.c: 122:                 {
+{
+"123
+[; ;main.c: 123:                     status = OFF;
+[e = _status . `E3046 1 ]
+"124
+[; ;main.c: 124:                     for(int i = 0; i < 10; i++)
+{
+[v _i `i ~T0 @X0 1 a ]
+[e = _i -> 0 `i ]
 [e $ < _i -> 10 `i 416  ]
 [e $U 417  ]
 [e :U 416 ]
-"163
-[; ;main.c: 163:         {
+"125
+[; ;main.c: 125:                     {
 {
-"164
-[; ;main.c: 164:             Upper_LED[i](0);
+"126
+[; ;main.c: 126:                         Upper_LED[i](0);
 [e ( *U *U + &U _Upper_LED * -> -> _i `ui `ux -> -> # *U &U _Upper_LED `ui `ux (1 -> -> 0 `i `a ]
-"165
-[; ;main.c: 165:         }
+"127
+[; ;main.c: 127:                         Lower_LED[i](0);
+[e ( *U *U + &U _Lower_LED * -> -> _i `ui `ux -> -> # *U &U _Lower_LED `ui `ux (1 -> -> 0 `i `a ]
+"128
+[; ;main.c: 128:                     }
 }
 [e ++ _i -> 1 `i ]
 [e $ < _i -> 10 `i 416  ]
 [e :U 417 ]
 }
-"166
-[; ;main.c: 166:         for (int i = 0; i < currentCounter.lowerCounter; i++)
-{
-[v _i `i ~T0 @X0 1 a ]
-[e = _i -> 0 `i ]
-[e $U 422  ]
-[e :U 419 ]
-"167
-[; ;main.c: 167:         {
-{
-"168
-[; ;main.c: 168:             Lower_LED[i](1);
-[e ( *U *U + &U _Lower_LED * -> -> _i `ui `ux -> -> # *U &U _Lower_LED `ui `ux (1 -> -> 1 `i `a ]
-"169
-[; ;main.c: 169:         }
+"129
+[; ;main.c: 129:                 }
 }
-[e ++ _i -> 1 `i ]
-[e :U 422 ]
-[e $ < _i -> . _currentCounter 1 `i 419  ]
+[e :U 415 ]
+"130
+[; ;main.c: 130:             }
+}
+[e :U 389 ]
+"131
+[; ;main.c: 131:         }
+}
+[e :U 388 ]
+"133
+[; ;main.c: 133:         if((PORTBbits.RB2 == 0)&&(currentCounter.upperCounter < 10))
+[e $ ! && == -> . . _PORTBbits 0 2 `i -> 0 `i < -> . _currentCounter 0 `i -> 10 `i 419  ]
+"134
+[; ;main.c: 134:         {
+{
+"135
+[; ;main.c: 135:             _delay((unsigned long)((100)*(500000/4000.0)));
+[e ( __delay (1 -> * -> -> 100 `i `d / -> -> 500000 `l `d .4000.0 `ul ]
+"136
+[; ;main.c: 136:             if(PORTBbits.RB2 != 0)
+[e $ ! != -> . . _PORTBbits 0 2 `i -> 0 `i 420  ]
+"137
+[; ;main.c: 137:                 currentCounter.upperCounter++;
+[e ++ . _currentCounter 0 -> -> 1 `i `uc ]
+[e $U 421  ]
+"138
+[; ;main.c: 138:             else if(PORTBbits.RB2 == 0)
 [e :U 420 ]
-}
-"170
-[; ;main.c: 170:         for (int i = currentCounter.lowerCounter; i < 10; i++)
+[e $ ! == -> . . _PORTBbits 0 2 `i -> 0 `i 422  ]
+"139
+[; ;main.c: 139:             {
 {
-[v _i `i ~T0 @X0 1 a ]
-[e = _i -> . _currentCounter 1 `i ]
-[e $ < _i -> 10 `i 423  ]
-[e $U 424  ]
+"140
+[; ;main.c: 140:                 _delay((unsigned long)((400)*(500000/4000.0)));
+[e ( __delay (1 -> * -> -> 400 `i `d / -> -> 500000 `l `d .4000.0 `ul ]
+"141
+[; ;main.c: 141:                 currentCounter.upperCounter++;
+[e ++ . _currentCounter 0 -> -> 1 `i `uc ]
+"142
+[; ;main.c: 142:             }
+}
+[e :U 422 ]
+[e :U 421 ]
+"144
+[; ;main.c: 144:         }
+}
+[e :U 419 ]
+"146
+[; ;main.c: 146:         if((PORTBbits.RB1 == 0)&&(currentCounter.lowerCounter < 10))
+[e $ ! && == -> . . _PORTBbits 0 1 `i -> 0 `i < -> . _currentCounter 1 `i -> 10 `i 423  ]
+"147
+[; ;main.c: 147:         {
+{
+"148
+[; ;main.c: 148:             _delay((unsigned long)((100)*(500000/4000.0)));
+[e ( __delay (1 -> * -> -> 100 `i `d / -> -> 500000 `l `d .4000.0 `ul ]
+"149
+[; ;main.c: 149:             if(PORTBbits.RB1 != 0)
+[e $ ! != -> . . _PORTBbits 0 1 `i -> 0 `i 424  ]
+"150
+[; ;main.c: 150:                 currentCounter.lowerCounter++;
+[e ++ . _currentCounter 1 -> -> 1 `i `uc ]
+[e $U 425  ]
+"151
+[; ;main.c: 151:             else if(PORTBbits.RB1 == 0)
+[e :U 424 ]
+[e $ ! == -> . . _PORTBbits 0 1 `i -> 0 `i 426  ]
+"152
+[; ;main.c: 152:             {
+{
+"153
+[; ;main.c: 153:                 _delay((unsigned long)((400)*(500000/4000.0)));
+[e ( __delay (1 -> * -> -> 400 `i `d / -> -> 500000 `l `d .4000.0 `ul ]
+"154
+[; ;main.c: 154:                 currentCounter.lowerCounter++;
+[e ++ . _currentCounter 1 -> -> 1 `i `uc ]
+"155
+[; ;main.c: 155:             }
+}
+[e :U 426 ]
+[e :U 425 ]
+"156
+[; ;main.c: 156:         }
+}
 [e :U 423 ]
+"158
+[; ;main.c: 158:         if((PORTBbits.RB4 == 0)&&(currentCounter.upperCounter > 0))
+[e $ ! && == -> . . _PORTBbits 0 4 `i -> 0 `i > -> . _currentCounter 0 `i -> 0 `i 427  ]
+"159
+[; ;main.c: 159:         {
+{
+"160
+[; ;main.c: 160:             _delay((unsigned long)((100)*(500000/4000.0)));
+[e ( __delay (1 -> * -> -> 100 `i `d / -> -> 500000 `l `d .4000.0 `ul ]
+"161
+[; ;main.c: 161:             if(PORTBbits.RB4 != 0)
+[e $ ! != -> . . _PORTBbits 0 4 `i -> 0 `i 428  ]
+"162
+[; ;main.c: 162:                 currentCounter.upperCounter--;
+[e -- . _currentCounter 0 -> -> 1 `i `uc ]
+[e $U 429  ]
+"163
+[; ;main.c: 163:             else if(PORTBbits.RB4 == 0)
+[e :U 428 ]
+[e $ ! == -> . . _PORTBbits 0 4 `i -> 0 `i 430  ]
+"164
+[; ;main.c: 164:             {
+{
+"165
+[; ;main.c: 165:                 _delay((unsigned long)((400)*(500000/4000.0)));
+[e ( __delay (1 -> * -> -> 400 `i `d / -> -> 500000 `l `d .4000.0 `ul ]
+"166
+[; ;main.c: 166:                 currentCounter.upperCounter--;
+[e -- . _currentCounter 0 -> -> 1 `i `uc ]
+"167
+[; ;main.c: 167:             }
+}
+[e :U 430 ]
+[e :U 429 ]
+"168
+[; ;main.c: 168:         }
+}
+[e :U 427 ]
+"170
+[; ;main.c: 170:         if((PORTAbits.RA5 == 0)&&(currentCounter.lowerCounter > 0))
+[e $ ! && == -> . . _PORTAbits 0 5 `i -> 0 `i > -> . _currentCounter 1 `i -> 0 `i 431  ]
 "171
 [; ;main.c: 171:         {
 {
 "172
-[; ;main.c: 172:             Lower_LED[i](0);
-[e ( *U *U + &U _Lower_LED * -> -> _i `ui `ux -> -> # *U &U _Lower_LED `ui `ux (1 -> -> 0 `i `a ]
+[; ;main.c: 172:             _delay((unsigned long)((100)*(500000/4000.0)));
+[e ( __delay (1 -> * -> -> 100 `i `d / -> -> 500000 `l `d .4000.0 `ul ]
 "173
-[; ;main.c: 173:         }
+[; ;main.c: 173:             if(PORTAbits.RA5 != 0)
+[e $ ! != -> . . _PORTAbits 0 5 `i -> 0 `i 432  ]
+"174
+[; ;main.c: 174:                 currentCounter.lowerCounter--;
+[e -- . _currentCounter 1 -> -> 1 `i `uc ]
+[e $U 433  ]
+"175
+[; ;main.c: 175:             else if(PORTAbits.RA5 == 0)
+[e :U 432 ]
+[e $ ! == -> . . _PORTAbits 0 5 `i -> 0 `i 434  ]
+"176
+[; ;main.c: 176:             {
+{
+"177
+[; ;main.c: 177:                 _delay((unsigned long)((400)*(500000/4000.0)));
+[e ( __delay (1 -> * -> -> 400 `i `d / -> -> 500000 `l `d .4000.0 `ul ]
+"178
+[; ;main.c: 178:                 currentCounter.lowerCounter--;
+[e -- . _currentCounter 1 -> -> 1 `i `uc ]
+"179
+[; ;main.c: 179:             }
+}
+[e :U 434 ]
+[e :U 433 ]
+"180
+[; ;main.c: 180:         }
+}
+[e :U 431 ]
+"183
+[; ;main.c: 183:         if(PORTBbits.RB3 == 0)
+[e $ ! == -> . . _PORTBbits 0 3 `i -> 0 `i 435  ]
+"184
+[; ;main.c: 184:         {
+{
+"186
+[; ;main.c: 186:             _delay((unsigned long)((400)*(500000/4000.0)));
+[e ( __delay (1 -> * -> -> 400 `i `d / -> -> 500000 `l `d .4000.0 `ul ]
+"187
+[; ;main.c: 187:             if(PORTBbits.RB3 != 0)
+[e $ ! != -> . . _PORTBbits 0 3 `i -> 0 `i 436  ]
+"188
+[; ;main.c: 188:             {
+{
+"190
+[; ;main.c: 190:                 currentCounter.upperCounter = savedCounter.upperCounter;
+[e = . _currentCounter 0 . _savedCounter 0 ]
+"191
+[; ;main.c: 191:                 currentCounter.lowerCounter = savedCounter.lowerCounter;
+[e = . _currentCounter 1 . _savedCounter 1 ]
+"192
+[; ;main.c: 192:             }
+}
+[e $U 437  ]
+"193
+[; ;main.c: 193:             else if(PORTBbits.RB3 == 0)
+[e :U 436 ]
+[e $ ! == -> . . _PORTBbits 0 3 `i -> 0 `i 438  ]
+"194
+[; ;main.c: 194:             {
+{
+"196
+[; ;main.c: 196:                 savedCounter.upperCounter = currentCounter.upperCounter;
+[e = . _savedCounter 0 . _currentCounter 0 ]
+"197
+[; ;main.c: 197:                 savedCounter.lowerCounter = currentCounter.lowerCounter;
+[e = . _savedCounter 1 . _currentCounter 1 ]
+"198
+[; ;main.c: 198:             }
+}
+[e :U 438 ]
+[e :U 437 ]
+"200
+[; ;main.c: 200:         }
+}
+[e :U 435 ]
+"202
+[; ;main.c: 202:         switch(status)
+[e $U 440  ]
+"203
+[; ;main.c: 203:         {
+{
+"204
+[; ;main.c: 204:             case ON:
+[e :U 441 ]
+"205
+[; ;main.c: 205:             {
+{
+"207
+[; ;main.c: 207:                 for (int i = 0; i < currentCounter.upperCounter; i++)
+{
+[v _i `i ~T0 @X0 1 a ]
+[e = _i -> 0 `i ]
+[e $U 445  ]
+[e :U 442 ]
+"208
+[; ;main.c: 208:                 {
+{
+"209
+[; ;main.c: 209:                     Upper_LED[i](1);
+[e ( *U *U + &U _Upper_LED * -> -> _i `ui `ux -> -> # *U &U _Upper_LED `ui `ux (1 -> -> 1 `i `a ]
+"210
+[; ;main.c: 210:                 }
 }
 [e ++ _i -> 1 `i ]
-[e $ < _i -> 10 `i 423  ]
-[e :U 424 ]
+[e :U 445 ]
+[e $ < _i -> . _currentCounter 0 `i 442  ]
+[e :U 443 ]
 }
-"202
-[; ;main.c: 202:     }
+"211
+[; ;main.c: 211:                 for (int i = currentCounter.upperCounter; i < 10; i++)
+{
+[v _i `i ~T0 @X0 1 a ]
+[e = _i -> . _currentCounter 0 `i ]
+[e $ < _i -> 10 `i 446  ]
+[e $U 447  ]
+[e :U 446 ]
+"212
+[; ;main.c: 212:                 {
+{
+"213
+[; ;main.c: 213:                     Upper_LED[i](0);
+[e ( *U *U + &U _Upper_LED * -> -> _i `ui `ux -> -> # *U &U _Upper_LED `ui `ux (1 -> -> 0 `i `a ]
+"214
+[; ;main.c: 214:                 }
+}
+[e ++ _i -> 1 `i ]
+[e $ < _i -> 10 `i 446  ]
+[e :U 447 ]
+}
+"215
+[; ;main.c: 215:                 for (int i = 0; i < currentCounter.lowerCounter; i++)
+{
+[v _i `i ~T0 @X0 1 a ]
+[e = _i -> 0 `i ]
+[e $U 452  ]
+[e :U 449 ]
+"216
+[; ;main.c: 216:                 {
+{
+"217
+[; ;main.c: 217:                     Lower_LED[i](1);
+[e ( *U *U + &U _Lower_LED * -> -> _i `ui `ux -> -> # *U &U _Lower_LED `ui `ux (1 -> -> 1 `i `a ]
+"218
+[; ;main.c: 218:                 }
+}
+[e ++ _i -> 1 `i ]
+[e :U 452 ]
+[e $ < _i -> . _currentCounter 1 `i 449  ]
+[e :U 450 ]
+}
+"220
+[; ;main.c: 220:                 for (int i = currentCounter.lowerCounter; i < 10; i++)
+{
+[v _i `i ~T0 @X0 1 a ]
+[e = _i -> . _currentCounter 1 `i ]
+[e $ < _i -> 10 `i 453  ]
+[e $U 454  ]
+[e :U 453 ]
+"221
+[; ;main.c: 221:                 {
+{
+"222
+[; ;main.c: 222:                     Lower_LED[i](0);
+[e ( *U *U + &U _Lower_LED * -> -> _i `ui `ux -> -> # *U &U _Lower_LED `ui `ux (1 -> -> 0 `i `a ]
+"223
+[; ;main.c: 223:                 }
+}
+[e ++ _i -> 1 `i ]
+[e $ < _i -> 10 `i 453  ]
+[e :U 454 ]
+}
+"225
+[; ;main.c: 225:             }
+}
+"226
+[; ;main.c: 226:             break;
+[e $U 439  ]
+"227
+[; ;main.c: 227:             case OFF:
+[e :U 456 ]
+"228
+[; ;main.c: 228:             {
+{
+"229
+[; ;main.c: 229:                 Upper_LED[savedCounter.upperCounter - 1](1);
+[e ( *U *U + &U _Upper_LED * -> -> - -> . _savedCounter 0 `i -> 1 `i `ui `ux -> -> # *U &U _Upper_LED `ui `ux (1 -> -> 1 `i `a ]
+"230
+[; ;main.c: 230:                 Lower_LED[savedCounter.lowerCounter - 1](1);
+[e ( *U *U + &U _Lower_LED * -> -> - -> . _savedCounter 1 `i -> 1 `i `ui `ux -> -> # *U &U _Lower_LED `ui `ux (1 -> -> 1 `i `a ]
+"231
+[; ;main.c: 231:             }
+}
+"232
+[; ;main.c: 232:             break;
+[e $U 439  ]
+"233
+[; ;main.c: 233:             default : break;
+[e :U 457 ]
+[e $U 439  ]
+"234
+[; ;main.c: 234:         }
+}
+[e $U 439  ]
+[e :U 440 ]
+[e [\ -> _status `ui , $ -> . `E3046 0 `ui 441
+ , $ -> . `E3046 1 `ui 456
+ 457 ]
+[e :U 439 ]
+"235
+[; ;main.c: 235:     }
 }
 [e :U 385 ]
 [e $U 386  ]
 [e :U 387 ]
-"204
-[; ;main.c: 204: }
+"237
+[; ;main.c: 237: }
 [e :UE 378 ]
 }

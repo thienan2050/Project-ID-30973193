@@ -5486,10 +5486,55 @@ void main(void)
             _delay((unsigned long)((100)*(500000/4000.0)));
             if(PORTAbits.RA4 == 0)
             {
-                if (status == OFF)
+                do { LATEbits.LATE2 = ~LATEbits.LATE2; } while(0);
+                if(status == OFF)
+                {
                     status = ON;
+
+                    for(int i = 0; i < 10; i++)
+                    {
+                        Upper_LED[i](0);
+                        Lower_LED[i](0);
+                    }
+
+                    for(int i = 0; i < 10; i++)
+                    {
+                        Upper_LED[i](1);
+                        Lower_LED[i](1);
+                        _delay((unsigned long)((50)*(500000/4000.0)));
+                    }
+                    for(int i = 9; i >= 0; i--)
+                    {
+                        Upper_LED[i](0);
+                        Lower_LED[i](0);
+                        _delay((unsigned long)((100)*(500000/4000.0)));
+                    }
+                    for(int i = 0; i < (currentCounter.upperCounter > currentCounter.lowerCounter ? currentCounter.lowerCounter : currentCounter.upperCounter); i++)
+                    {
+                        Upper_LED[i](1);
+                        Lower_LED[i](1);
+                        _delay((unsigned long)((50)*(500000/4000.0)));
+                    }
+                    for(int i = (currentCounter.upperCounter > currentCounter.lowerCounter ? currentCounter.lowerCounter : currentCounter.upperCounter); i < (currentCounter.upperCounter < currentCounter.lowerCounter ? currentCounter.lowerCounter : currentCounter.upperCounter); i++)
+                    {
+                        if (currentCounter.upperCounter > currentCounter.lowerCounter)
+                            Upper_LED[i](1);
+                        else if (currentCounter.upperCounter < currentCounter.lowerCounter)
+                            Lower_LED[i](1);
+                        else
+                            break;
+                        _delay((unsigned long)((50)*(500000/4000.0)));
+                    }
+                }
                 else
+                {
                     status = OFF;
+                    for(int i = 0; i < 10; i++)
+                    {
+                        Upper_LED[i](0);
+                        Lower_LED[i](0);
+                    }
+                }
             }
         }
 
@@ -5556,30 +5601,45 @@ void main(void)
             else if(PORTBbits.RB3 == 0)
             {
 
-
                 savedCounter.upperCounter = currentCounter.upperCounter;
                 savedCounter.lowerCounter = currentCounter.lowerCounter;
             }
 
         }
 
-        for (int i = 0; i < currentCounter.upperCounter; i++)
+        switch(status)
         {
-            Upper_LED[i](1);
+            case ON:
+            {
+
+                for (int i = 0; i < currentCounter.upperCounter; i++)
+                {
+                    Upper_LED[i](1);
+                }
+                for (int i = currentCounter.upperCounter; i < 10; i++)
+                {
+                    Upper_LED[i](0);
+                }
+                for (int i = 0; i < currentCounter.lowerCounter; i++)
+                {
+                    Lower_LED[i](1);
+                }
+
+                for (int i = currentCounter.lowerCounter; i < 10; i++)
+                {
+                    Lower_LED[i](0);
+                }
+
+            }
+            break;
+            case OFF:
+            {
+                Upper_LED[savedCounter.upperCounter - 1](1);
+                Lower_LED[savedCounter.lowerCounter - 1](1);
+            }
+            break;
+            default : break;
         }
-        for (int i = currentCounter.upperCounter; i < 10; i++)
-        {
-            Upper_LED[i](0);
-        }
-        for (int i = 0; i < currentCounter.lowerCounter; i++)
-        {
-            Lower_LED[i](1);
-        }
-        for (int i = currentCounter.lowerCounter; i < 10; i++)
-        {
-            Lower_LED[i](0);
-        }
-# 202 "main.c"
     }
 
 }

@@ -78,10 +78,55 @@ void main(void)
             __delay_ms(100);
             if(ON_OFF_GetValue() == 0)
             {
-                if (status == OFF)
+                LED_Toggle();
+                if(status == OFF)
+                {
                     status = ON;
+                    /*Turn off all LEDs */
+                    for(int i = 0; i < 10; i++)
+                    {
+                        Upper_LED[i](false);
+                        Lower_LED[i](false);
+                    }
+                    /*Turn on forward */
+                    for(int i = 0; i < 10; i++)
+                    {
+                        Upper_LED[i](true);
+                        Lower_LED[i](true);
+                        __delay_ms(50);
+                    }
+                    for(int i = 9; i >= 0; i--)
+                    {
+                        Upper_LED[i](false);
+                        Lower_LED[i](false);
+                        __delay_ms(100);
+                    }
+                    for(int i = 0; i < (currentCounter.upperCounter > currentCounter.lowerCounter ? currentCounter.lowerCounter : currentCounter.upperCounter); i++)  
+                    {
+                        Upper_LED[i](true);
+                        Lower_LED[i](true);
+                        __delay_ms(50);
+                    }
+                    for(int i = (currentCounter.upperCounter > currentCounter.lowerCounter ? currentCounter.lowerCounter : currentCounter.upperCounter); i < (currentCounter.upperCounter < currentCounter.lowerCounter ? currentCounter.lowerCounter : currentCounter.upperCounter); i++)
+                    {
+                        if (currentCounter.upperCounter > currentCounter.lowerCounter)
+                            Upper_LED[i](true);
+                        else if (currentCounter.upperCounter < currentCounter.lowerCounter)
+                            Lower_LED[i](true);
+                        else
+                            break;
+                        __delay_ms(50);
+                    }
+                }
                 else
+                {
                     status = OFF;
+                    for(int i = 0; i < 10; i++)
+                    {
+                        Upper_LED[i](false);
+                        Lower_LED[i](false);
+                    }
+                }
             }
         }
         /*W-UP touch pad */
@@ -148,57 +193,45 @@ void main(void)
             else if(M2_GetValue() == 0)
             {
                 /*Save new counter */
-                //LED_Toggle();
                 savedCounter.upperCounter = currentCounter.upperCounter;
                 savedCounter.lowerCounter = currentCounter.lowerCounter;
             }
             
         }
         // Add your application code
-        for (int i = 0; i < currentCounter.upperCounter; i++)
-        {
-            Upper_LED[i](true);
-        }
-        for (int i = currentCounter.upperCounter; i < 10; i++)
-        {
-            Upper_LED[i](false);
-        }
-        for (int i = 0; i < currentCounter.lowerCounter; i++)
-        {
-            Lower_LED[i](true);
-        }
-        for (int i = currentCounter.lowerCounter; i < 10; i++)
-        {
-            Lower_LED[i](false);
-        }
-        /*
         switch(status)
         {
             case ON:
             {
-                //Do something here.
-                LED_SetHigh();
-                Upper_LED[5](false);
-                Lower_LED[5](false);
+                
+                for (int i = 0; i < currentCounter.upperCounter; i++)
+                {
+                    Upper_LED[i](true);
+                }
+                for (int i = currentCounter.upperCounter; i < 10; i++)
+                {
+                    Upper_LED[i](false);
+                }
+                for (int i = 0; i < currentCounter.lowerCounter; i++)
+                {
+                    Lower_LED[i](true);
+                }
+                
+                for (int i = currentCounter.lowerCounter; i < 10; i++)
+                {
+                    Lower_LED[i](false);
+                }
+                
             }
             break;
             case OFF:
             {
-                //Do something here.
-                LED_SetLow();
-                for (int i = 0; i < 10; i++)
-                {
-                    Upper_LED[i](false);
-                    Lower_LED[i](false);
-                }
-                Upper_LED[5](true); 
-                Lower_LED[5](true);
+                Upper_LED[savedCounter.upperCounter - 1](true);
+                Lower_LED[savedCounter.lowerCounter - 1](true);
             }
             break;
             default : break;
         }
-         */ 
-
     }
      
 }

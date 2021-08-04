@@ -48,6 +48,10 @@
 
 #include "pin_manager.h"
 
+
+
+
+
 void PIN_MANAGER_Initialize(void)
 {
     /**
@@ -72,9 +76,9 @@ void PIN_MANAGER_Initialize(void)
     ANSELx registers
     */
     ANSELD = 0x00;
-    ANSELB = 0x3F;
+    ANSELB = 0x29;
     ANSELE = 0x05;
-    ANSELA = 0x32;
+    ANSELA = 0x12;
 
     /**
     WPUx registers

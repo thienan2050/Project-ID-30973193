@@ -5283,10 +5283,6 @@ void PIN_MANAGER_IOC(void);
 # 49 "mcc_generated_files/pin_manager.c" 2
 
 
-
-
-
-
 void PIN_MANAGER_Initialize(void)
 {
 
@@ -5311,9 +5307,9 @@ void PIN_MANAGER_Initialize(void)
 
 
     ANSELD = 0x00;
-    ANSELB = 0x29;
+    ANSELB = 0x3F;
     ANSELE = 0x05;
-    ANSELA = 0x12;
+    ANSELA = 0x32;
 
 
 

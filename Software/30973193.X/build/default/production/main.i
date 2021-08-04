@@ -5281,9 +5281,9 @@ extern __bank0 __bit __timeout;
 # 50 "./mcc_generated_files/mcc.h" 2
 
 # 1 "./mcc_generated_files/pin_manager.h" 1
-# 356 "./mcc_generated_files/pin_manager.h"
+# 421 "./mcc_generated_files/pin_manager.h"
 void PIN_MANAGER_Initialize (void);
-# 368 "./mcc_generated_files/pin_manager.h"
+# 433 "./mcc_generated_files/pin_manager.h"
 void PIN_MANAGER_IOC(void);
 # 51 "./mcc_generated_files/mcc.h" 2
 
@@ -5452,6 +5452,7 @@ void WDT_Initialize(void);
 
 void (* Upper_LED[10])(_Bool) = {setA0, setE1, setA6, setC3, setD1, setD3, setC5, setC7, setD5, setD7};
 void (* Lower_LED[10])(_Bool) = {setA2, setA3, setA7, setC0, setD0, setD2, setC4, setC6, setD4, setD6};
+char upperCounter = 4, lowerCounter = 5;
 
 
 
@@ -5460,24 +5461,50 @@ void main(void)
 {
 
     SYSTEM_Initialize();
-# 70 "main.c"
+# 85 "main.c"
     do { LATCbits.LATC1 = 0; } while(0);
     do { LATCbits.LATC2 = 0; } while(0);
     while (1)
     {
+        if((PORTBbits.RB2 == 0)&&(upperCounter < 10))
+        {
+            while(PORTBbits.RB2 == 0);
+            upperCounter++;
+        }
+        if((PORTBbits.RB1 == 0)&&(lowerCounter < 10))
+        {
+            while(PORTBbits.RB1 == 0);
+            lowerCounter++;
+        }
+        if((PORTBbits.RB4 == 0)&&(upperCounter > 0))
+        {
+            while(PORTBbits.RB4 == 0);
+            upperCounter--;
+        }
+        if((PORTAbits.RA5 == 0)&&(lowerCounter > 0))
+        {
+            while(PORTAbits.RA5 == 0);
+            lowerCounter--;
+        }
 
-        for (int i = 0; i < 10; i++)
+
+        for (int i = 0; i < upperCounter; i++)
         {
             Upper_LED[i](1);
-            Lower_LED[i](1);
         }
-
-        _delay((unsigned long)((500)*(500000/4000.0)));
-        for (int i = 0; i < 10; i++)
+        for(int i = upperCounter; i < 10; i++)
         {
             Upper_LED[i](0);
+        }
+        for (int i = 0; i < lowerCounter; i++)
+        {
+            Lower_LED[i](1);
+        }
+        for(int i = lowerCounter; i < 10; i++)
+        {
             Lower_LED[i](0);
         }
-        _delay((unsigned long)((500)*(500000/4000.0)));
+
     }
+
 }

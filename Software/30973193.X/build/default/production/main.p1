@@ -76,10 +76,28 @@ Version 4.0 HI-TECH Software Intermediate Code
 "2498
 [; ;C:/Program Files/Microchip/MPLABX/v5.50/packs/Microchip/PIC12-16F1xxx_DFP/1.2.63/xc8\pic\include\proc\pic16f1939.h: 2498: extern volatile LATCbits_t LATCbits __attribute__((address(0x10E)));
 [v _LATCbits `VS122 ~T0 @X0 0 e@270 ]
-[v F2893 `(v ~T0 @X0 1 tf1`ul ]
-"92 C:/Program Files/Microchip/MPLABX/v5.50/packs/Microchip/PIC12-16F1xxx_DFP/1.2.63/xc8\pic\include\pic.h
-[v __delay `JF2893 ~T0 @X0 0 e ]
-[p i __delay ]
+"497
+[; ;C:/Program Files/Microchip/MPLABX/v5.50/packs/Microchip/PIC12-16F1xxx_DFP/1.2.63/xc8\pic\include\proc\pic16f1939.h: 497:     struct {
+[s S36 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S36 . RB0 RB1 RB2 RB3 RB4 RB5 RB6 RB7 ]
+"496
+[; ;C:/Program Files/Microchip/MPLABX/v5.50/packs/Microchip/PIC12-16F1xxx_DFP/1.2.63/xc8\pic\include\proc\pic16f1939.h: 496: typedef union {
+[u S35 `S36 1 ]
+[n S35 . . ]
+"508
+[; ;C:/Program Files/Microchip/MPLABX/v5.50/packs/Microchip/PIC12-16F1xxx_DFP/1.2.63/xc8\pic\include\proc\pic16f1939.h: 508: extern volatile PORTBbits_t PORTBbits __attribute__((address(0x00D)));
+[v _PORTBbits `VS35 ~T0 @X0 0 e@13 ]
+"435
+[; ;C:/Program Files/Microchip/MPLABX/v5.50/packs/Microchip/PIC12-16F1xxx_DFP/1.2.63/xc8\pic\include\proc\pic16f1939.h: 435:     struct {
+[s S34 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S34 . RA0 RA1 RA2 RA3 RA4 RA5 RA6 RA7 ]
+"434
+[; ;C:/Program Files/Microchip/MPLABX/v5.50/packs/Microchip/PIC12-16F1xxx_DFP/1.2.63/xc8\pic\include\proc\pic16f1939.h: 434: typedef union {
+[u S33 `S34 1 ]
+[n S33 . . ]
+"446
+[; ;C:/Program Files/Microchip/MPLABX/v5.50/packs/Microchip/PIC12-16F1xxx_DFP/1.2.63/xc8\pic\include\proc\pic16f1939.h: 446: extern volatile PORTAbits_t PORTAbits __attribute__((address(0x00C)));
+[v _PORTAbits `VS33 ~T0 @X0 0 e@12 ]
 "54 C:/Program Files/Microchip/MPLABX/v5.50/packs/Microchip/PIC12-16F1xxx_DFP/1.2.63/xc8\pic\include\proc\pic16f1939.h
 [; ;C:/Program Files/Microchip/MPLABX/v5.50/packs/Microchip/PIC12-16F1xxx_DFP/1.2.63/xc8\pic\include\proc\pic16f1939.h: 54: __asm("INDF0 equ 00h");
 [; <" INDF0 equ 00h ;# ">
@@ -639,99 +657,219 @@ Version 4.0 HI-TECH Software Intermediate Code
 &U _setD6
 ..
 ]
+"47
+[; ;main.c: 47: char upperCounter = 4, lowerCounter = 5;
+[v _upperCounter `uc ~T0 @X0 1 e ]
+[i _upperCounter
+-> -> 4 `i `uc
+]
+[v _lowerCounter `uc ~T0 @X0 1 e ]
+[i _lowerCounter
+-> -> 5 `i `uc
+]
 [v $root$_main `(v ~T0 @X0 0 e ]
-"51
-[; ;main.c: 51: void main(void)
-[v _main `(v ~T0 @X0 1 ef ]
 "52
-[; ;main.c: 52: {
+[; ;main.c: 52: void main(void)
+[v _main `(v ~T0 @X0 1 ef ]
+"53
+[; ;main.c: 53: {
 {
 [e :U _main ]
 [f ]
-"54
-[; ;main.c: 54:     SYSTEM_Initialize();
+"55
+[; ;main.c: 55:     SYSTEM_Initialize();
 [e ( _SYSTEM_Initialize ..  ]
-"70
-[; ;main.c: 70:     do { LATCbits.LATC1 = 0; } while(0);
+"85
+[; ;main.c: 85:     do { LATCbits.LATC1 = 0; } while(0);
 [e :U 380 ]
 {
 [e = . . _LATCbits 0 1 -> -> 0 `i `uc ]
 }
 [e :U 379 ]
-"71
-[; ;main.c: 71:     do { LATCbits.LATC2 = 0; } while(0);
+"86
+[; ;main.c: 86:     do { LATCbits.LATC2 = 0; } while(0);
 [e :U 383 ]
 {
 [e = . . _LATCbits 0 2 -> -> 0 `i `uc ]
 }
 [e :U 382 ]
-"72
-[; ;main.c: 72:     while (1)
-[e :U 385 ]
-"73
-[; ;main.c: 73:     {
-{
-"75
-[; ;main.c: 75:         for (int i = 0; i < 10; i++)
-{
-[v _i `i ~T0 @X0 1 a ]
-[e = _i -> 0 `i ]
-[e $ < _i -> 10 `i 387  ]
-[e $U 388  ]
-[e :U 387 ]
-"76
-[; ;main.c: 76:         {
-{
-"77
-[; ;main.c: 77:             Upper_LED[i](1);
-[e ( *U *U + &U _Upper_LED * -> -> _i `ui `ux -> -> # *U &U _Upper_LED `ui `ux (1 -> -> 1 `i `a ]
-"78
-[; ;main.c: 78:             Lower_LED[i](1);
-[e ( *U *U + &U _Lower_LED * -> -> _i `ui `ux -> -> # *U &U _Lower_LED `ui `ux (1 -> -> 1 `i `a ]
-"79
-[; ;main.c: 79:         }
-}
-[e ++ _i -> 1 `i ]
-[e $ < _i -> 10 `i 387  ]
-[e :U 388 ]
-}
-"81
-[; ;main.c: 81:         _delay((unsigned long)((500)*(500000/4000.0)));
-[e ( __delay (1 -> * -> -> 500 `i `d / -> -> 500000 `l `d .4000.0 `ul ]
-"82
-[; ;main.c: 82:         for (int i = 0; i < 10; i++)
-{
-[v _i `i ~T0 @X0 1 a ]
-[e = _i -> 0 `i ]
-[e $ < _i -> 10 `i 390  ]
-[e $U 391  ]
-[e :U 390 ]
-"83
-[; ;main.c: 83:         {
-{
-"84
-[; ;main.c: 84:             Upper_LED[i](0);
-[e ( *U *U + &U _Upper_LED * -> -> _i `ui `ux -> -> # *U &U _Upper_LED `ui `ux (1 -> -> 0 `i `a ]
-"85
-[; ;main.c: 85:             Lower_LED[i](0);
-[e ( *U *U + &U _Lower_LED * -> -> _i `ui `ux -> -> # *U &U _Lower_LED `ui `ux (1 -> -> 0 `i `a ]
-"86
-[; ;main.c: 86:         }
-}
-[e ++ _i -> 1 `i ]
-[e $ < _i -> 10 `i 390  ]
-[e :U 391 ]
-}
 "87
-[; ;main.c: 87:         _delay((unsigned long)((500)*(500000/4000.0)));
-[e ( __delay (1 -> * -> -> 500 `i `d / -> -> 500000 `l `d .4000.0 `ul ]
+[; ;main.c: 87:     while (1)
+[e :U 385 ]
 "88
-[; ;main.c: 88:     }
+[; ;main.c: 88:     {
+{
+"89
+[; ;main.c: 89:         if((PORTBbits.RB2 == 0)&&(upperCounter < 10))
+[e $ ! && == -> . . _PORTBbits 0 2 `i -> 0 `i < -> _upperCounter `i -> 10 `i 387  ]
+"90
+[; ;main.c: 90:         {
+{
+"91
+[; ;main.c: 91:             while(PORTBbits.RB2 == 0);
+[e $U 388  ]
+[e :U 389 ]
+[e :U 388 ]
+[e $ == -> . . _PORTBbits 0 2 `i -> 0 `i 389  ]
+[e :U 390 ]
+"92
+[; ;main.c: 92:             upperCounter++;
+[e ++ _upperCounter -> -> 1 `i `uc ]
+"93
+[; ;main.c: 93:         }
+}
+[e :U 387 ]
+"94
+[; ;main.c: 94:         if((PORTBbits.RB1 == 0)&&(lowerCounter < 10))
+[e $ ! && == -> . . _PORTBbits 0 1 `i -> 0 `i < -> _lowerCounter `i -> 10 `i 391  ]
+"95
+[; ;main.c: 95:         {
+{
+"96
+[; ;main.c: 96:             while(PORTBbits.RB1 == 0);
+[e $U 392  ]
+[e :U 393 ]
+[e :U 392 ]
+[e $ == -> . . _PORTBbits 0 1 `i -> 0 `i 393  ]
+[e :U 394 ]
+"97
+[; ;main.c: 97:             lowerCounter++;
+[e ++ _lowerCounter -> -> 1 `i `uc ]
+"98
+[; ;main.c: 98:         }
+}
+[e :U 391 ]
+"99
+[; ;main.c: 99:         if((PORTBbits.RB4 == 0)&&(upperCounter > 0))
+[e $ ! && == -> . . _PORTBbits 0 4 `i -> 0 `i > -> _upperCounter `i -> 0 `i 395  ]
+"100
+[; ;main.c: 100:         {
+{
+"101
+[; ;main.c: 101:             while(PORTBbits.RB4 == 0);
+[e $U 396  ]
+[e :U 397 ]
+[e :U 396 ]
+[e $ == -> . . _PORTBbits 0 4 `i -> 0 `i 397  ]
+[e :U 398 ]
+"102
+[; ;main.c: 102:             upperCounter--;
+[e -- _upperCounter -> -> 1 `i `uc ]
+"103
+[; ;main.c: 103:         }
+}
+[e :U 395 ]
+"104
+[; ;main.c: 104:         if((PORTAbits.RA5 == 0)&&(lowerCounter > 0))
+[e $ ! && == -> . . _PORTAbits 0 5 `i -> 0 `i > -> _lowerCounter `i -> 0 `i 399  ]
+"105
+[; ;main.c: 105:         {
+{
+"106
+[; ;main.c: 106:             while(PORTAbits.RA5 == 0);
+[e $U 400  ]
+[e :U 401 ]
+[e :U 400 ]
+[e $ == -> . . _PORTAbits 0 5 `i -> 0 `i 401  ]
+[e :U 402 ]
+"107
+[; ;main.c: 107:             lowerCounter--;
+[e -- _lowerCounter -> -> 1 `i `uc ]
+"108
+[; ;main.c: 108:         }
+}
+[e :U 399 ]
+"111
+[; ;main.c: 111:         for (int i = 0; i < upperCounter; i++)
+{
+[v _i `i ~T0 @X0 1 a ]
+[e = _i -> 0 `i ]
+[e $U 406  ]
+[e :U 403 ]
+"112
+[; ;main.c: 112:         {
+{
+"113
+[; ;main.c: 113:             Upper_LED[i](1);
+[e ( *U *U + &U _Upper_LED * -> -> _i `ui `ux -> -> # *U &U _Upper_LED `ui `ux (1 -> -> 1 `i `a ]
+"114
+[; ;main.c: 114:         }
+}
+[e ++ _i -> 1 `i ]
+[e :U 406 ]
+[e $ < _i -> _upperCounter `i 403  ]
+[e :U 404 ]
+}
+"115
+[; ;main.c: 115:         for(int i = upperCounter; i < 10; i++)
+{
+[v _i `i ~T0 @X0 1 a ]
+[e = _i -> _upperCounter `i ]
+[e $ < _i -> 10 `i 407  ]
+[e $U 408  ]
+[e :U 407 ]
+"116
+[; ;main.c: 116:         {
+{
+"117
+[; ;main.c: 117:             Upper_LED[i](0);
+[e ( *U *U + &U _Upper_LED * -> -> _i `ui `ux -> -> # *U &U _Upper_LED `ui `ux (1 -> -> 0 `i `a ]
+"118
+[; ;main.c: 118:         }
+}
+[e ++ _i -> 1 `i ]
+[e $ < _i -> 10 `i 407  ]
+[e :U 408 ]
+}
+"119
+[; ;main.c: 119:         for (int i = 0; i < lowerCounter; i++)
+{
+[v _i `i ~T0 @X0 1 a ]
+[e = _i -> 0 `i ]
+[e $U 413  ]
+[e :U 410 ]
+"120
+[; ;main.c: 120:         {
+{
+"121
+[; ;main.c: 121:             Lower_LED[i](1);
+[e ( *U *U + &U _Lower_LED * -> -> _i `ui `ux -> -> # *U &U _Lower_LED `ui `ux (1 -> -> 1 `i `a ]
+"122
+[; ;main.c: 122:         }
+}
+[e ++ _i -> 1 `i ]
+[e :U 413 ]
+[e $ < _i -> _lowerCounter `i 410  ]
+[e :U 411 ]
+}
+"123
+[; ;main.c: 123:         for(int i = lowerCounter; i < 10; i++)
+{
+[v _i `i ~T0 @X0 1 a ]
+[e = _i -> _lowerCounter `i ]
+[e $ < _i -> 10 `i 414  ]
+[e $U 415  ]
+[e :U 414 ]
+"124
+[; ;main.c: 124:         {
+{
+"125
+[; ;main.c: 125:             Lower_LED[i](0);
+[e ( *U *U + &U _Lower_LED * -> -> _i `ui `ux -> -> # *U &U _Lower_LED `ui `ux (1 -> -> 0 `i `a ]
+"126
+[; ;main.c: 126:         }
+}
+[e ++ _i -> 1 `i ]
+[e $ < _i -> 10 `i 414  ]
+[e :U 415 ]
+}
+"128
+[; ;main.c: 128:     }
 }
 [e :U 384 ]
 [e $U 385  ]
 [e :U 386 ]
-"89
-[; ;main.c: 89: }
+"130
+[; ;main.c: 130: }
 [e :UE 377 ]
 }

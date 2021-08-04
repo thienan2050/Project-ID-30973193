@@ -44,6 +44,7 @@
 #include "mcc_generated_files/mcc.h"
 void (* Upper_LED[10])(bool) = {setA0, setE1, setA6, setC3, setD1, setD3, setC5, setC7, setD5, setD7};
 void (* Lower_LED[10])(bool) = {setA2, setA3, setA7, setC0, setD0, setD2, setC4, setC6, setD4, setD6};
+char upperCounter = 4, lowerCounter = 5;
 /*
                          Main application
  */
@@ -67,25 +68,65 @@ void main(void)
 
     // Disable the Peripheral Interrupts
     //INTERRUPT_PeripheralInterruptDisable();
+    /*
+    while(1)
+    {
+        if(W_UP_GetValue() == 0)
+        {
+            Upper_LED[1](true);
+            while(W_UP_GetValue() == 0);
+        }
+            
+        else
+            Upper_LED[1](false);
+    }
+    */
+    
     IO_RC1_SetLow();
     IO_RC2_SetLow();
     while (1)
     {
-        // Add your application code
-        for (int i = 0; i < 10; i++)
+        if((W_UP_GetValue() == 0)&&(upperCounter < 10))
         {
-            Upper_LED[i](true);
-            Lower_LED[i](true);
+            while(W_UP_GetValue() == 0);
+            upperCounter++;
+        }
+        if((Y_UP_GetValue() == 0)&&(lowerCounter < 10))
+        {
+            while(Y_UP_GetValue() == 0);
+            lowerCounter++;
+        }
+        if((W_DOWN_GetValue() == 0)&&(upperCounter > 0))
+        {
+            while(W_DOWN_GetValue() == 0);
+            upperCounter--;
+        }
+        if((Y_DOWN_GetValue() == 0)&&(lowerCounter > 0))
+        {
+            while(Y_DOWN_GetValue() == 0);
+            lowerCounter--;
         }
         
-        __delay_ms(500);
-        for (int i = 0; i < 10; i++)
+        // Add your application code
+        for (int i = 0; i < upperCounter; i++)
+        {
+            Upper_LED[i](true);
+        }
+        for(int i = upperCounter; i < 10; i++)
         {
             Upper_LED[i](false);
+        }
+        for (int i = 0; i < lowerCounter; i++)
+        {
+            Lower_LED[i](true);
+        }
+        for(int i = lowerCounter; i < 10; i++)
+        {
             Lower_LED[i](false);
         }
-        __delay_ms(500);
+
     }
+     
 }
 /**
  End of File

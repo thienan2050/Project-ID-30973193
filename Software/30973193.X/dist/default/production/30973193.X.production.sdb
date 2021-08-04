@@ -11,7 +11,7 @@
 [v ___eecpymem __eecpymem `(v  1 e 1 0 ]
 "39
 [v ___memcpyee __memcpyee `(v  1 e 1 0 ]
-"51 C:\Users\Thien An Bui\OneDrive\Desktop\Project-ID-30973193\Software\30973193.X\main.c
+"52 C:\Users\Thien An Bui\OneDrive\Desktop\Project-ID-30973193\Software\30973193.X\main.c
 [v _main main `(v  1 e 1 0 ]
 "15 C:\Users\Thien An Bui\OneDrive\Desktop\Project-ID-30973193\Software\30973193.X\mcc_generated_files/LED_manager.c
 [v _setA0 setA0 `(v  1 e 1 0 ]
@@ -59,9 +59,33 @@
 [v _OSCILLATOR_Initialize OSCILLATOR_Initialize `(v  1 e 1 0 ]
 "68
 [v _WDT_Initialize WDT_Initialize `(v  1 e 1 0 ]
-"51 C:\Users\Thien An Bui\OneDrive\Desktop\Project-ID-30973193\Software\30973193.X\mcc_generated_files/pin_manager.c
+"55 C:\Users\Thien An Bui\OneDrive\Desktop\Project-ID-30973193\Software\30973193.X\mcc_generated_files/pin_manager.c
 [v _PIN_MANAGER_Initialize PIN_MANAGER_Initialize `(v  1 e 1 0 ]
-"1313 C:/Program Files/Microchip/MPLABX/v5.50/packs/Microchip/PIC12-16F1xxx_DFP/1.2.63/xc8\pic\include\proc\pic16f1939.h
+[s S303 . 1 `uc 1 RA0 1 0 :1:0 
+`uc 1 RA1 1 0 :1:1 
+`uc 1 RA2 1 0 :1:2 
+`uc 1 RA3 1 0 :1:3 
+`uc 1 RA4 1 0 :1:4 
+`uc 1 RA5 1 0 :1:5 
+`uc 1 RA6 1 0 :1:6 
+`uc 1 RA7 1 0 :1:7 
+]
+"446 C:/Program Files/Microchip/MPLABX/v5.50/packs/Microchip/PIC12-16F1xxx_DFP/1.2.63/xc8\pic\include\proc\pic16f1939.h
+[u S312 . 1 `S303 1 . 1 0 ]
+[v _PORTAbits PORTAbits `VES312  1 e 1 @12 ]
+[s S282 . 1 `uc 1 RB0 1 0 :1:0 
+`uc 1 RB1 1 0 :1:1 
+`uc 1 RB2 1 0 :1:2 
+`uc 1 RB3 1 0 :1:3 
+`uc 1 RB4 1 0 :1:4 
+`uc 1 RB5 1 0 :1:5 
+`uc 1 RB6 1 0 :1:6 
+`uc 1 RB7 1 0 :1:7 
+]
+"508
+[u S291 . 1 `S282 1 . 1 0 ]
+[v _PORTBbits PORTBbits `VES291  1 e 1 @13 ]
+"1313
 [v _TRISA TRISA `VEuc  1 e 1 @140 ]
 "1375
 [v _TRISB TRISB `VEuc  1 e 1 @141 ]
@@ -96,7 +120,7 @@
 [v _OSCCON OSCCON `VEuc  1 e 1 @153 ]
 "2357
 [v _LATA LATA `VEuc  1 e 1 @268 ]
-[s S260 . 1 `uc 1 LATA0 1 0 :1:0 
+[s S98 . 1 `uc 1 LATA0 1 0 :1:0 
 `uc 1 LATA1 1 0 :1:1 
 `uc 1 LATA2 1 0 :1:2 
 `uc 1 LATA3 1 0 :1:3 
@@ -106,13 +130,13 @@
 `uc 1 LATA7 1 0 :1:7 
 ]
 "2374
-[u S269 . 1 `S260 1 . 1 0 ]
-[v _LATAbits LATAbits `VES269  1 e 1 @268 ]
+[u S107 . 1 `S98 1 . 1 0 ]
+[v _LATAbits LATAbits `VES107  1 e 1 @268 ]
 "2419
 [v _LATB LATB `VEuc  1 e 1 @269 ]
 "2481
 [v _LATC LATC `VEuc  1 e 1 @270 ]
-[s S201 . 1 `uc 1 LATC0 1 0 :1:0 
+[s S132 . 1 `uc 1 LATC0 1 0 :1:0 
 `uc 1 LATC1 1 0 :1:1 
 `uc 1 LATC2 1 0 :1:2 
 `uc 1 LATC3 1 0 :1:3 
@@ -122,11 +146,11 @@
 `uc 1 LATC7 1 0 :1:7 
 ]
 "2498
-[u S210 . 1 `S201 1 . 1 0 ]
-[v _LATCbits LATCbits `VES210  1 e 1 @270 ]
+[u S141 . 1 `S132 1 . 1 0 ]
+[v _LATCbits LATCbits `VES141  1 e 1 @270 ]
 "2543
 [v _LATD LATD `VEuc  1 e 1 @271 ]
-[s S306 . 1 `uc 1 LATD0 1 0 :1:0 
+[s S153 . 1 `uc 1 LATD0 1 0 :1:0 
 `uc 1 LATD1 1 0 :1:1 
 `uc 1 LATD2 1 0 :1:2 
 `uc 1 LATD3 1 0 :1:3 
@@ -136,20 +160,20 @@
 `uc 1 LATD7 1 0 :1:7 
 ]
 "2563
-[s S315 . 1 `uc 1 LATD 1 0 :8:0 
+[s S162 . 1 `uc 1 LATD 1 0 :8:0 
 ]
-[u S317 . 1 `S306 1 . 1 0 `S315 1 . 1 0 ]
-[v _LATDbits LATDbits `VES317  1 e 1 @271 ]
+[u S164 . 1 `S153 1 . 1 0 `S162 1 . 1 0 ]
+[v _LATDbits LATDbits `VES164  1 e 1 @271 ]
 "2613
 [v _LATE LATE `VEuc  1 e 1 @272 ]
-[s S281 . 1 `uc 1 LATE0 1 0 :1:0 
+[s S119 . 1 `uc 1 LATE0 1 0 :1:0 
 `uc 1 LATE1 1 0 :1:1 
 `uc 1 LATE2 1 0 :1:2 
 `uc 1 LATE3 1 0 :1:3 
 ]
 "2626
-[u S286 . 1 `S281 1 . 1 0 ]
-[v _LATEbits LATEbits `VES286  1 e 1 @272 ]
+[u S124 . 1 `S119 1 . 1 0 ]
+[v _LATEbits LATEbits `VES124  1 e 1 @272 ]
 "2923
 [v _BORCON BORCON `VEuc  1 e 1 @278 ]
 "3272
@@ -170,14 +194,21 @@
 [v _Upper_LED Upper_LED `[10]*.37(v  1 e 20 0 ]
 "46
 [v _Lower_LED Lower_LED `[10]*.37(v  1 e 20 0 ]
-"51
+"47
+[v _upperCounter upperCounter `uc  1 e 1 0 ]
+[v _lowerCounter lowerCounter `uc  1 e 1 0 ]
+"52
 [v _main main `(v  1 e 1 0 ]
 {
-"82
-[v main@i_259 i `i  1 a 2 4 ]
-"75
-[v main@i i `i  1 a 2 2 ]
-"89
+"123
+[v main@i_367 i `i  1 a 2 9 ]
+"119
+[v main@i_366 i `i  1 a 2 5 ]
+"115
+[v main@i_365 i `i  1 a 2 7 ]
+"111
+[v main@i i `i  1 a 2 3 ]
+"130
 } 0
 "78 C:\Users\Thien An Bui\OneDrive\Desktop\Project-ID-30973193\Software\30973193.X\mcc_generated_files/LED_manager.c
 [v _setD7 setD7 `(v  1 e 1 0 ]
@@ -309,10 +340,10 @@
 {
 "72
 } 0
-"51 C:\Users\Thien An Bui\OneDrive\Desktop\Project-ID-30973193\Software\30973193.X\mcc_generated_files/pin_manager.c
+"55 C:\Users\Thien An Bui\OneDrive\Desktop\Project-ID-30973193\Software\30973193.X\mcc_generated_files/pin_manager.c
 [v _PIN_MANAGER_Initialize PIN_MANAGER_Initialize `(v  1 e 1 0 ]
 {
-"97
+"101
 } 0
 "58 C:\Users\Thien An Bui\OneDrive\Desktop\Project-ID-30973193\Software\30973193.X\mcc_generated_files/mcc.c
 [v _OSCILLATOR_Initialize OSCILLATOR_Initialize `(v  1 e 1 0 ]

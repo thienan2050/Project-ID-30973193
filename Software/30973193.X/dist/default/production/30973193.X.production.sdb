@@ -3,8 +3,8 @@
 [d edition pro ]
 [d chip 16F1939 ]
 [d frameptr 6 ]
-"56 C:\Users\Thien An Bui\OneDrive\Desktop\Project-ID-30973193\Software\30973193.X\main.c
-[e E3046 . `uc
+"70 C:\Users\Thien An Bui\OneDrive\Desktop\Project-ID-30973193\Software\30973193.X\main.c
+[e E3000 . `uc
 ON 0
 OFF 1
 ]
@@ -16,7 +16,7 @@ OFF 1
 [v ___eecpymem __eecpymem `(v  1 e 1 0 ]
 "39
 [v ___memcpyee __memcpyee `(v  1 e 1 0 ]
-"61 C:\Users\Thien An Bui\OneDrive\Desktop\Project-ID-30973193\Software\30973193.X\main.c
+"63 C:\Users\Thien An Bui\OneDrive\Desktop\Project-ID-30973193\Software\30973193.X\main.c
 [v _main main `(v  1 e 1 0 ]
 "15 C:\Users\Thien An Bui\OneDrive\Desktop\Project-ID-30973193\Software\30973193.X\mcc_generated_files/LED_manager.c
 [v _setA0 setA0 `(v  1 e 1 0 ]
@@ -66,7 +66,7 @@ OFF 1
 [v _WDT_Initialize WDT_Initialize `(v  1 e 1 0 ]
 "55 C:\Users\Thien An Bui\OneDrive\Desktop\Project-ID-30973193\Software\30973193.X\mcc_generated_files/pin_manager.c
 [v _PIN_MANAGER_Initialize PIN_MANAGER_Initialize `(v  1 e 1 0 ]
-[s S288 . 1 `uc 1 RA0 1 0 :1:0 
+[s S292 . 1 `uc 1 RA0 1 0 :1:0 
 `uc 1 RA1 1 0 :1:1 
 `uc 1 RA2 1 0 :1:2 
 `uc 1 RA3 1 0 :1:3 
@@ -76,9 +76,9 @@ OFF 1
 `uc 1 RA7 1 0 :1:7 
 ]
 "446 C:/Program Files/Microchip/MPLABX/v5.50/packs/Microchip/PIC12-16F1xxx_DFP/1.2.63/xc8\pic\include\proc\pic16f1939.h
-[u S297 . 1 `S288 1 . 1 0 ]
-[v _PORTAbits PORTAbits `VES297  1 e 1 @12 ]
-[s S323 . 1 `uc 1 RB0 1 0 :1:0 
+[u S301 . 1 `S292 1 . 1 0 ]
+[v _PORTAbits PORTAbits `VES301  1 e 1 @12 ]
+[s S327 . 1 `uc 1 RB0 1 0 :1:0 
 `uc 1 RB1 1 0 :1:1 
 `uc 1 RB2 1 0 :1:2 
 `uc 1 RB3 1 0 :1:3 
@@ -88,8 +88,8 @@ OFF 1
 `uc 1 RB7 1 0 :1:7 
 ]
 "508
-[u S332 . 1 `S323 1 . 1 0 ]
-[v _PORTBbits PORTBbits `VES332  1 e 1 @13 ]
+[u S336 . 1 `S327 1 . 1 0 ]
+[v _PORTBbits PORTBbits `VES336  1 e 1 @13 ]
 "1313
 [v _TRISA TRISA `VEuc  1 e 1 @140 ]
 "1375
@@ -195,40 +195,48 @@ OFF 1
 [v _WPUB WPUB `VEuc  1 e 1 @525 ]
 "4133
 [v _WPUE WPUE `VEuc  1 e 1 @528 ]
-"45 C:\Users\Thien An Bui\OneDrive\Desktop\Project-ID-30973193\Software\30973193.X\main.c
-[v _Upper_LED Upper_LED `[10]*.37(v  1 e 20 0 ]
-"46
-[v _Lower_LED Lower_LED `[10]*.37(v  1 e 20 0 ]
-"56
-[v _status status `E3046  1 e 1 0 ]
-"61
+"63 C:\Users\Thien An Bui\OneDrive\Desktop\Project-ID-30973193\Software\30973193.X\main.c
 [v _main main `(v  1 e 1 0 ]
 {
-"124
-[v main@i_390 i `i  1 a 2 22 ]
-"110
-[v main@i_388 i `i  1 a 2 14 ]
-"104
-[v main@i_386 i `i  1 a 2 8 ]
-"98
-[v main@i_385 i `i  1 a 2 20 ]
-"92
-[v main@i_384 i `i  1 a 2 18 ]
-"86
-[v main@i i `i  1 a 2 16 ]
-"220
-[v main@i_402 i `i  1 a 2 12 ]
-"215
-[v main@i_401 i `i  1 a 2 6 ]
-"211
-[v main@i_400 i `i  1 a 2 10 ]
-"207
-[v main@i_399 i `i  1 a 2 4 ]
-[s S273 . 2 `uc 1 upperCounter 1 0 `uc 1 lowerCounter 1 1 ]
-"65
-[v main@currentCounter currentCounter `S273  1 a 2 26 ]
-[v main@savedCounter savedCounter `S273  1 a 2 24 ]
-"237
+"134
+[v main@i_412 i `i  1 a 2 62 ]
+"120
+[v main@i_410 i `i  1 a 2 54 ]
+"114
+[v main@i_408 i `i  1 a 2 48 ]
+"108
+[v main@i_407 i `i  1 a 2 60 ]
+"102
+[v main@i_406 i `i  1 a 2 58 ]
+"96
+[v main@i i `i  1 a 2 56 ]
+"316
+[v main@i_426 i `i  1 a 2 66 ]
+"310
+[v main@i_425 i `i  1 a 2 64 ]
+"299
+[v main@i_424 i `i  1 a 2 52 ]
+"294
+[v main@i_423 i `i  1 a 2 46 ]
+"290
+[v main@i_422 i `i  1 a 2 50 ]
+"286
+[v main@i_421 i `i  1 a 2 44 ]
+"69
+[v main@Lower_LED Lower_LED `[10]*.37(v  1 a 20 20 ]
+"68
+[v main@Upper_LED Upper_LED `[10]*.37(v  1 a 20 0 ]
+[s S248 . 4 `uc 1 upperCounter 1 0 `uc 1 lowerCounter 1 1 `uc 1 upperStop 1 2 `uc 1 lowerStop 1 3 ]
+"67
+[v main@currentStatus currentStatus `S248  1 a 4 73 ]
+[v main@savedStatus savedStatus `S248  1 a 4 69 ]
+"70
+[v main@mode mode `E3000  1 a 1 68 ]
+"67
+[v main@F3007 F3007 `[10]*.37(v  1 s 20 F3007 ]
+"68
+[v main@F3033 F3033 `[10]*.37(v  1 s 20 F3033 ]
+"328
 } 0
 "78 C:\Users\Thien An Bui\OneDrive\Desktop\Project-ID-30973193\Software\30973193.X\mcc_generated_files/LED_manager.c
 [v _setD7 setD7 `(v  1 e 1 0 ]

@@ -42,31 +42,41 @@
 */
 
 #include "mcc_generated_files/mcc.h"
-void (* Upper_LED[10])(bool) = {setA0, setE1, setA6, setC3, setD1, setD3, setC5, setC7, setD5, setD7};
-void (* Lower_LED[10])(bool) = {setA2, setA3, setA7, setC0, setD0, setD2, setC4, setC6, setD4, setD6};
+
 typedef struct
 {
     unsigned char upperCounter;
     unsigned char lowerCounter;
-}Counter_t;
+    unsigned char upperStop;
+    unsigned char lowerStop;
+    
+}Status_t;
 
 
-char upperCounter = 4, lowerCounter = 5;
+
 typedef enum {ON, OFF} MODE;
-MODE status = OFF;
+
 /*
-                         Main application
- */
+Main application
+*/
 
 void main(void)
 {
     // initialize the device
     SYSTEM_Initialize();
-    Counter_t savedCounter, currentCounter;
-    currentCounter.upperCounter = 5;
-    currentCounter.lowerCounter = 4;
-    savedCounter.upperCounter = 5;
-    savedCounter.lowerCounter = 4;
+    Status_t savedStatus, currentStatus;
+    void (* Upper_LED[10])(bool) = {setA0, setE1, setA6, setC3, setD1, setD3, setC5, setC7, setD5, setD7};
+    void (* Lower_LED[10])(bool) = {setA2, setA3, setA7, setC0, setD0, setD2, setC4, setC6, setD4, setD6};
+    MODE mode = OFF;
+    currentStatus.upperCounter = 5;
+    currentStatus.lowerCounter = 4;
+    currentStatus.upperStop = 5;
+    currentStatus.lowerStop = 4;
+    
+    savedStatus.upperCounter = 5;
+    savedStatus.lowerCounter = 4;
+    savedStatus.upperStop = 5;
+    savedStatus.lowerStop = 4;
     
     IO_RC1_SetLow();
     IO_RC2_SetLow();
@@ -79,9 +89,9 @@ void main(void)
             if(ON_OFF_GetValue() == 0)
             {
                 LED_Toggle();
-                if(status == OFF)
+                if(mode == OFF)
                 {
-                    status = ON;
+                    mode = ON;
                     /*Turn off all LEDs */
                     for(int i = 0; i < 10; i++)
                     {
@@ -101,17 +111,17 @@ void main(void)
                         Lower_LED[i](false);
                         __delay_ms(100);
                     }
-                    for(int i = 0; i < (currentCounter.upperCounter > currentCounter.lowerCounter ? currentCounter.lowerCounter : currentCounter.upperCounter); i++)  
+                    for(int i = 0; i < (currentStatus.upperCounter > currentStatus.lowerCounter ? currentStatus.lowerCounter : currentStatus.upperCounter); i++)  
                     {
                         Upper_LED[i](true);
                         Lower_LED[i](true);
                         __delay_ms(50);
                     }
-                    for(int i = (currentCounter.upperCounter > currentCounter.lowerCounter ? currentCounter.lowerCounter : currentCounter.upperCounter); i < (currentCounter.upperCounter < currentCounter.lowerCounter ? currentCounter.lowerCounter : currentCounter.upperCounter); i++)
+                    for(int i = (currentStatus.upperCounter > currentStatus.lowerCounter ? currentStatus.lowerCounter : currentStatus.upperCounter); i < (currentStatus.upperCounter < currentStatus.lowerCounter ? currentStatus.lowerCounter : currentStatus.upperCounter); i++)
                     {
-                        if (currentCounter.upperCounter > currentCounter.lowerCounter)
+                        if (currentStatus.upperCounter > currentStatus.lowerCounter)
                             Upper_LED[i](true);
-                        else if (currentCounter.upperCounter < currentCounter.lowerCounter)
+                        else if (currentStatus.upperCounter < currentStatus.lowerCounter)
                             Lower_LED[i](true);
                         else
                             break;
@@ -120,7 +130,7 @@ void main(void)
                 }
                 else
                 {
-                    status = OFF;
+                    mode = OFF;
                     for(int i = 0; i < 10; i++)
                     {
                         Upper_LED[i](false);
@@ -130,104 +140,181 @@ void main(void)
             }
         }
         /*W-UP touch pad */
-        if((W_UP_GetValue() == 0)&&(currentCounter.upperCounter < 10))
+        if(W_UP_GetValue() == 0)
         {
-            __delay_ms(100);
-            if(W_UP_GetValue() != 0)
-                currentCounter.upperCounter++;
-            else if(W_UP_GetValue() == 0)
+            if((mode == OFF)&&(currentStatus.upperStop < 9))
             {
-                __delay_ms(400);
-                currentCounter.upperCounter++;
+                __delay_ms(100);
+                if(W_UP_GetValue() != 0)
+                    currentStatus.upperStop++;
+                else if(W_UP_GetValue() == 0)
+                {
+                   __delay_ms(200);
+                   currentStatus.upperStop++;
+                }
             }
-                
+            else if ((mode == ON)&&(currentStatus.upperCounter < 10))
+            {
+                __delay_ms(100);   
+                if(W_UP_GetValue() != 0)
+                    currentStatus.upperCounter++;
+                else if(W_UP_GetValue() == 0)
+                {
+                    __delay_ms(200);
+                    currentStatus.upperCounter++;
+                }   
+            }
         }
         /*Y-UP touch pad */
-        if((Y_UP_GetValue() == 0)&&(currentCounter.lowerCounter < 10))
+        if(Y_UP_GetValue() == 0)
         {
             __delay_ms(100);
-            if(Y_UP_GetValue() != 0)
-                currentCounter.lowerCounter++;
-            else if(Y_UP_GetValue() == 0)
+            if((mode == OFF)&&(currentStatus.lowerStop < 9))
             {
-                __delay_ms(400);
-                currentCounter.lowerCounter++;
+                if(Y_UP_GetValue() != 0)
+                   currentStatus.lowerStop++;
+                else if(Y_UP_GetValue() == 0)
+                {
+                    __delay_ms(200);
+                    currentStatus.lowerStop++;
+                }
+            }
+            else if((mode == ON)&&(currentStatus.lowerCounter < 10))
+            {
+                if(Y_UP_GetValue() != 0)
+                    currentStatus.lowerCounter++;
+                else if(Y_UP_GetValue() == 0)
+                {
+                    __delay_ms(200);
+                    currentStatus.lowerCounter++;
+                }
             }
         }
         /* W-DOWN touch pad */
-        if((W_DOWN_GetValue() == 0)&&(currentCounter.upperCounter > 0))
+        if(W_DOWN_GetValue() == 0)
         {
             __delay_ms(100);
-            if(W_DOWN_GetValue() != 0)
-                currentCounter.upperCounter--;
-            else if(W_DOWN_GetValue() == 0)
+            if((mode == OFF)&&(currentStatus.upperStop > 0))
             {
-                __delay_ms(400);
-                currentCounter.upperCounter--;
+                if(W_DOWN_GetValue() != 0)
+                    currentStatus.upperStop--;
+                else if(W_DOWN_GetValue() == 0)
+                {
+                    __delay_ms(200);
+                    currentStatus.upperStop--;
+                }    
+            }
+            else if((mode == ON)&&(currentStatus.upperCounter > 0))
+            {
+                if(W_DOWN_GetValue() != 0)
+                    currentStatus.upperCounter--;
+                else if(W_DOWN_GetValue() == 0)
+                {
+                    __delay_ms(200);
+                    currentStatus.upperCounter--;
+                }
             }
         }
         /* Y-DOWN touch pad */
-        if((Y_DOWN_GetValue() == 0)&&(currentCounter.lowerCounter > 0))
+        if(Y_DOWN_GetValue() == 0)
         {
             __delay_ms(100);
-            if(Y_DOWN_GetValue() != 0)
-                currentCounter.lowerCounter--;
-            else if(Y_DOWN_GetValue() == 0)
+            if((mode == OFF)&&(currentStatus.lowerStop > 0))
+            {            
+                if(Y_DOWN_GetValue() != 0)
+                    currentStatus.lowerStop--;
+                else if(Y_DOWN_GetValue() == 0)
+                {
+                    __delay_ms(200);
+                    currentStatus.lowerStop--;
+                }
+            }
+            else if((mode == ON)&&(currentStatus.lowerCounter > 0))
             {
-                __delay_ms(400);
-                currentCounter.lowerCounter--;
+                            if(Y_DOWN_GetValue() != 0)
+                currentStatus.lowerCounter--;
+                else if(Y_DOWN_GetValue() == 0)
+                {
+                    __delay_ms(200);
+                    currentStatus.lowerCounter--;
+                }
             }
         }
+
         /*M1 touch pad */
+        if(M1_GetValue() == 0)
+        {
+            __delay_ms(400);
+            if(M1_GetValue() != 0)
+            {
+                /*Restore saved counter. */
+                currentStatus.upperStop = savedStatus.upperStop;
+                currentStatus.lowerStop = savedStatus.lowerStop;
+            }
+            else if(M1_GetValue() == 0)
+            {
+                /*Save new counter */
+                savedStatus.upperStop = currentStatus.upperStop;
+                savedStatus.lowerStop = currentStatus.lowerStop;
+            }        
+        }
         /*M2 touch pad */
         if(M2_GetValue() == 0)
         {
-            
             __delay_ms(400);
             if(M2_GetValue() != 0)
             {
                 /*Restore saved counter. */
-                currentCounter.upperCounter = savedCounter.upperCounter;
-                currentCounter.lowerCounter = savedCounter.lowerCounter;
+                currentStatus.upperCounter = savedStatus.upperCounter;
+                currentStatus.lowerCounter = savedStatus.lowerCounter;
             }
             else if(M2_GetValue() == 0)
             {
                 /*Save new counter */
-                savedCounter.upperCounter = currentCounter.upperCounter;
-                savedCounter.lowerCounter = currentCounter.lowerCounter;
-            }
-            
+                savedStatus.upperCounter = currentStatus.upperCounter;
+                savedStatus.lowerCounter = currentStatus.lowerCounter;
+            }        
         }
         // Add your application code
-        switch(status)
+        switch(mode)
         {
             case ON:
-            {
-                
-                for (int i = 0; i < currentCounter.upperCounter; i++)
+            {                
+                for (int i = 0; i < currentStatus.upperCounter; i++)
                 {
                     Upper_LED[i](true);
                 }
-                for (int i = currentCounter.upperCounter; i < 10; i++)
+                for (int i = currentStatus.upperCounter; i < 10; i++)
                 {
                     Upper_LED[i](false);
                 }
-                for (int i = 0; i < currentCounter.lowerCounter; i++)
+                for (int i = 0; i < currentStatus.lowerCounter; i++)
                 {
                     Lower_LED[i](true);
                 }
                 
-                for (int i = currentCounter.lowerCounter; i < 10; i++)
+                for (int i = currentStatus.lowerCounter; i < 10; i++)
                 {
                     Lower_LED[i](false);
-                }
-                
+                }                
             }
             break;
             case OFF:
             {
-                Upper_LED[savedCounter.upperCounter - 1](true);
-                Lower_LED[savedCounter.lowerCounter - 1](true);
+                Upper_LED[currentStatus.upperStop](true);
+                Lower_LED[currentStatus.lowerStop](true);
+                for (int i = 0; i < 10; i++)
+                {
+                    if(i == currentStatus.upperStop)
+                        continue;
+                    Upper_LED[i](false);
+                }
+                for (int i = 0; i < 10; i++)
+                {
+                    if(i == currentStatus.lowerStop)
+                        continue;
+                    Lower_LED[i](false);
+                }
             }
             break;
             default : break;

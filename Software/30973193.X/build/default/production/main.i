@@ -5450,18 +5450,20 @@ void OSCILLATOR_Initialize(void);
 void WDT_Initialize(void);
 # 44 "main.c" 2
 
-void (* Upper_LED[10])(_Bool) = {setA0, setE1, setA6, setC3, setD1, setD3, setC5, setC7, setD5, setD7};
-void (* Lower_LED[10])(_Bool) = {setA2, setA3, setA7, setC0, setD0, setD2, setC4, setC6, setD4, setD6};
+
 typedef struct
 {
     unsigned char upperCounter;
     unsigned char lowerCounter;
-}Counter_t;
+    unsigned char upperStop;
+    unsigned char lowerStop;
+
+}Status_t;
 
 
-char upperCounter = 4, lowerCounter = 5;
+
 typedef enum {ON, OFF} MODE;
-MODE status = OFF;
+
 
 
 
@@ -5470,11 +5472,19 @@ void main(void)
 {
 
     SYSTEM_Initialize();
-    Counter_t savedCounter, currentCounter;
-    currentCounter.upperCounter = 5;
-    currentCounter.lowerCounter = 4;
-    savedCounter.upperCounter = 5;
-    savedCounter.lowerCounter = 4;
+    Status_t savedStatus, currentStatus;
+    void (* Upper_LED[10])(_Bool) = {setA0, setE1, setA6, setC3, setD1, setD3, setC5, setC7, setD5, setD7};
+    void (* Lower_LED[10])(_Bool) = {setA2, setA3, setA7, setC0, setD0, setD2, setC4, setC6, setD4, setD6};
+    MODE mode = OFF;
+    currentStatus.upperCounter = 5;
+    currentStatus.lowerCounter = 4;
+    currentStatus.upperStop = 5;
+    currentStatus.lowerStop = 4;
+
+    savedStatus.upperCounter = 5;
+    savedStatus.lowerCounter = 4;
+    savedStatus.upperStop = 5;
+    savedStatus.lowerStop = 4;
 
     do { LATCbits.LATC1 = 0; } while(0);
     do { LATCbits.LATC2 = 0; } while(0);
@@ -5487,9 +5497,9 @@ void main(void)
             if(PORTAbits.RA4 == 0)
             {
                 do { LATEbits.LATE2 = ~LATEbits.LATE2; } while(0);
-                if(status == OFF)
+                if(mode == OFF)
                 {
-                    status = ON;
+                    mode = ON;
 
                     for(int i = 0; i < 10; i++)
                     {
@@ -5509,17 +5519,17 @@ void main(void)
                         Lower_LED[i](0);
                         _delay((unsigned long)((100)*(500000/4000.0)));
                     }
-                    for(int i = 0; i < (currentCounter.upperCounter > currentCounter.lowerCounter ? currentCounter.lowerCounter : currentCounter.upperCounter); i++)
+                    for(int i = 0; i < (currentStatus.upperCounter > currentStatus.lowerCounter ? currentStatus.lowerCounter : currentStatus.upperCounter); i++)
                     {
                         Upper_LED[i](1);
                         Lower_LED[i](1);
                         _delay((unsigned long)((50)*(500000/4000.0)));
                     }
-                    for(int i = (currentCounter.upperCounter > currentCounter.lowerCounter ? currentCounter.lowerCounter : currentCounter.upperCounter); i < (currentCounter.upperCounter < currentCounter.lowerCounter ? currentCounter.lowerCounter : currentCounter.upperCounter); i++)
+                    for(int i = (currentStatus.upperCounter > currentStatus.lowerCounter ? currentStatus.lowerCounter : currentStatus.upperCounter); i < (currentStatus.upperCounter < currentStatus.lowerCounter ? currentStatus.lowerCounter : currentStatus.upperCounter); i++)
                     {
-                        if (currentCounter.upperCounter > currentCounter.lowerCounter)
+                        if (currentStatus.upperCounter > currentStatus.lowerCounter)
                             Upper_LED[i](1);
-                        else if (currentCounter.upperCounter < currentCounter.lowerCounter)
+                        else if (currentStatus.upperCounter < currentStatus.lowerCounter)
                             Lower_LED[i](1);
                         else
                             break;
@@ -5528,7 +5538,7 @@ void main(void)
                 }
                 else
                 {
-                    status = OFF;
+                    mode = OFF;
                     for(int i = 0; i < 10; i++)
                     {
                         Upper_LED[i](0);
@@ -5538,55 +5548,125 @@ void main(void)
             }
         }
 
-        if((PORTBbits.RB2 == 0)&&(currentCounter.upperCounter < 10))
+        if(PORTBbits.RB2 == 0)
         {
-            _delay((unsigned long)((100)*(500000/4000.0)));
-            if(PORTBbits.RB2 != 0)
-                currentCounter.upperCounter++;
-            else if(PORTBbits.RB2 == 0)
+            if((mode == OFF)&&(currentStatus.upperStop < 9))
             {
-                _delay((unsigned long)((400)*(500000/4000.0)));
-                currentCounter.upperCounter++;
+                _delay((unsigned long)((100)*(500000/4000.0)));
+                if(PORTBbits.RB2 != 0)
+                    currentStatus.upperStop++;
+                else if(PORTBbits.RB2 == 0)
+                {
+                   _delay((unsigned long)((200)*(500000/4000.0)));
+                   currentStatus.upperStop++;
+                }
             }
-
-        }
-
-        if((PORTBbits.RB1 == 0)&&(currentCounter.lowerCounter < 10))
-        {
-            _delay((unsigned long)((100)*(500000/4000.0)));
-            if(PORTBbits.RB1 != 0)
-                currentCounter.lowerCounter++;
-            else if(PORTBbits.RB1 == 0)
+            else if ((mode == ON)&&(currentStatus.upperCounter < 10))
             {
-                _delay((unsigned long)((400)*(500000/4000.0)));
-                currentCounter.lowerCounter++;
-            }
-        }
-
-        if((PORTBbits.RB4 == 0)&&(currentCounter.upperCounter > 0))
-        {
-            _delay((unsigned long)((100)*(500000/4000.0)));
-            if(PORTBbits.RB4 != 0)
-                currentCounter.upperCounter--;
-            else if(PORTBbits.RB4 == 0)
-            {
-                _delay((unsigned long)((400)*(500000/4000.0)));
-                currentCounter.upperCounter--;
+                _delay((unsigned long)((100)*(500000/4000.0)));
+                if(PORTBbits.RB2 != 0)
+                    currentStatus.upperCounter++;
+                else if(PORTBbits.RB2 == 0)
+                {
+                    _delay((unsigned long)((200)*(500000/4000.0)));
+                    currentStatus.upperCounter++;
+                }
             }
         }
 
-        if((PORTAbits.RA5 == 0)&&(currentCounter.lowerCounter > 0))
+        if(PORTBbits.RB1 == 0)
         {
             _delay((unsigned long)((100)*(500000/4000.0)));
-            if(PORTAbits.RA5 != 0)
-                currentCounter.lowerCounter--;
-            else if(PORTAbits.RA5 == 0)
+            if((mode == OFF)&&(currentStatus.lowerStop < 9))
             {
-                _delay((unsigned long)((400)*(500000/4000.0)));
-                currentCounter.lowerCounter--;
+                if(PORTBbits.RB1 != 0)
+                   currentStatus.lowerStop++;
+                else if(PORTBbits.RB1 == 0)
+                {
+                    _delay((unsigned long)((200)*(500000/4000.0)));
+                    currentStatus.lowerStop++;
+                }
+            }
+            else if((mode == ON)&&(currentStatus.lowerCounter < 10))
+            {
+                if(PORTBbits.RB1 != 0)
+                    currentStatus.lowerCounter++;
+                else if(PORTBbits.RB1 == 0)
+                {
+                    _delay((unsigned long)((200)*(500000/4000.0)));
+                    currentStatus.lowerCounter++;
+                }
             }
         }
 
+        if(PORTBbits.RB4 == 0)
+        {
+            _delay((unsigned long)((100)*(500000/4000.0)));
+            if((mode == OFF)&&(currentStatus.upperStop > 0))
+            {
+                if(PORTBbits.RB4 != 0)
+                    currentStatus.upperStop--;
+                else if(PORTBbits.RB4 == 0)
+                {
+                    _delay((unsigned long)((200)*(500000/4000.0)));
+                    currentStatus.upperStop--;
+                }
+            }
+            else if((mode == ON)&&(currentStatus.upperCounter > 0))
+            {
+                if(PORTBbits.RB4 != 0)
+                    currentStatus.upperCounter--;
+                else if(PORTBbits.RB4 == 0)
+                {
+                    _delay((unsigned long)((200)*(500000/4000.0)));
+                    currentStatus.upperCounter--;
+                }
+            }
+        }
+
+        if(PORTAbits.RA5 == 0)
+        {
+            _delay((unsigned long)((100)*(500000/4000.0)));
+            if((mode == OFF)&&(currentStatus.lowerStop > 0))
+            {
+                if(PORTAbits.RA5 != 0)
+                    currentStatus.lowerStop--;
+                else if(PORTAbits.RA5 == 0)
+                {
+                    _delay((unsigned long)((200)*(500000/4000.0)));
+                    currentStatus.lowerStop--;
+                }
+            }
+            else if((mode == ON)&&(currentStatus.lowerCounter > 0))
+            {
+                            if(PORTAbits.RA5 != 0)
+                currentStatus.lowerCounter--;
+                else if(PORTAbits.RA5 == 0)
+                {
+                    _delay((unsigned long)((200)*(500000/4000.0)));
+                    currentStatus.lowerCounter--;
+                }
+            }
+        }
+
+
+        if(PORTBbits.RB5 == 0)
+        {
+
+            _delay((unsigned long)((400)*(500000/4000.0)));
+            if(PORTBbits.RB5 != 0)
+            {
+
+                currentStatus.upperStop = savedStatus.upperStop;
+                currentStatus.lowerStop = savedStatus.lowerStop;
+            }
+            else if(PORTBbits.RB5 == 0)
+            {
+
+                savedStatus.upperStop = currentStatus.upperStop;
+                savedStatus.lowerStop = currentStatus.lowerStop;
+            }
+        }
 
         if(PORTBbits.RB3 == 0)
         {
@@ -5595,37 +5675,36 @@ void main(void)
             if(PORTBbits.RB3 != 0)
             {
 
-                currentCounter.upperCounter = savedCounter.upperCounter;
-                currentCounter.lowerCounter = savedCounter.lowerCounter;
+                currentStatus.upperCounter = savedStatus.upperCounter;
+                currentStatus.lowerCounter = savedStatus.lowerCounter;
             }
             else if(PORTBbits.RB3 == 0)
             {
 
-                savedCounter.upperCounter = currentCounter.upperCounter;
-                savedCounter.lowerCounter = currentCounter.lowerCounter;
+                savedStatus.upperCounter = currentStatus.upperCounter;
+                savedStatus.lowerCounter = currentStatus.lowerCounter;
             }
-
         }
 
-        switch(status)
+        switch(mode)
         {
             case ON:
             {
 
-                for (int i = 0; i < currentCounter.upperCounter; i++)
+                for (int i = 0; i < currentStatus.upperCounter; i++)
                 {
                     Upper_LED[i](1);
                 }
-                for (int i = currentCounter.upperCounter; i < 10; i++)
+                for (int i = currentStatus.upperCounter; i < 10; i++)
                 {
                     Upper_LED[i](0);
                 }
-                for (int i = 0; i < currentCounter.lowerCounter; i++)
+                for (int i = 0; i < currentStatus.lowerCounter; i++)
                 {
                     Lower_LED[i](1);
                 }
 
-                for (int i = currentCounter.lowerCounter; i < 10; i++)
+                for (int i = currentStatus.lowerCounter; i < 10; i++)
                 {
                     Lower_LED[i](0);
                 }
@@ -5634,8 +5713,20 @@ void main(void)
             break;
             case OFF:
             {
-                Upper_LED[savedCounter.upperCounter - 1](1);
-                Lower_LED[savedCounter.lowerCounter - 1](1);
+                Upper_LED[currentStatus.upperStop](1);
+                Lower_LED[currentStatus.lowerStop](1);
+                for (int i = 0; i < 10; i++)
+                {
+                    if(i == currentStatus.upperStop)
+                        continue;
+                    Upper_LED[i](0);
+                }
+                for (int i = 0; i < 10; i++)
+                {
+                    if(i == currentStatus.lowerStop)
+                        continue;
+                    Lower_LED[i](0);
+                }
             }
             break;
             default : break;

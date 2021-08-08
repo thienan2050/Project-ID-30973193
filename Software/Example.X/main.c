@@ -68,6 +68,7 @@ void main(void)
     IO_RC1_SetLow();
     while (1)
     {
+	IO_RA0_SetHigh();
         IO_RA0_SetHigh();
         IO_RE1_SetHigh();
         IO_RA6_SetHigh();

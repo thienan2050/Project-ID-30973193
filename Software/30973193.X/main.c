@@ -49,7 +49,7 @@ typedef struct
     unsigned char lowerCounter;
     unsigned char upperStop;
     unsigned char lowerStop;
-    
+    unsigned char levelPWM;    
 }Status_t;
 
 
